@@ -1,5 +1,5 @@
 // server/controllers/initializationController.js
-const User = require('../models/user');
+const User = require('../models/User');
 const Field = require('../models/Field');
 const Task = require('../models/Task');
 const Alert = require('../models/Alert');
