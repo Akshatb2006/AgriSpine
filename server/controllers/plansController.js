@@ -510,3 +510,498 @@ exports.addTask = async (req, res) => {
   }
 };
 
+// Update an existing task
+exports.updateTask = async (req, res) => {
+  try {
+    const farmerId = req.user.id;
+    const { id, taskId } = req.params;
+    const updateData = req.body;
+
+    // Remove fields that shouldn't be updated directly
+    delete updateData._id;
+    delete updateData.aiGenerated;
+
+    const plan = await Plan.findOne({ _id: id, farmerId });
+    if (!plan) {
+      return res.status(404).json({ error: 'Plan not found' });
+    }
+
+    const task = plan.tasks.id(taskId);
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Validate task type if provided
+    if (updateData.type) {
+      const validTypes = ['irrigation', 'fertilizer', 'pesticide', 'planting', 'harvesting', 'monitoring', 'maintenance'];
+      if (!validTypes.includes(updateData.type)) {
+        return res.status(400).json({ error: 'Invalid task type' });
+      }
+    }
+
+    // Validate priority if provided
+    if (updateData.priority) {
+      const validPriorities = ['low', 'medium', 'high', 'critical'];
+      if (!validPriorities.includes(updateData.priority)) {
+        return res.status(400).json({ error: 'Invalid priority level' });
+      }
+    }
+
+    // Validate status if provided
+    if (updateData.status) {
+      const validStatuses = ['pending', 'in-progress', 'completed', 'skipped'];
+      if (!validStatuses.includes(updateData.status)) {
+        return res.status(400).json({ error: 'Invalid status' });
+      }
+    }
+
+    // Update task fields
+    Object.keys(updateData).forEach(key => {
+      if (key === 'scheduledDate' && updateData[key]) {
+        task[key] = new Date(updateData[key]);
+      } else if (updateData[key] !== undefined) {
+        task[key] = updateData[key];
+      }
+    });
+
+    // Handle completion date logic
+    if (updateData.status === 'completed' && !task.completedDate) {
+      task.completedDate = new Date();
+    } else if (updateData.status && updateData.status !== 'completed') {
+      task.completedDate = null;
+    }
+
+    await plan.save();
+
+    return res.json({
+      success: true,
+      data: {
+        taskId: task._id,
+        task: {
+          id: task._id,
+          title: task.title,
+          description: task.description,
+          type: task.type,
+          priority: task.priority,
+          status: task.status,
+          scheduledDate: task.scheduledDate,
+          estimatedDuration: task.estimatedDuration,
+          instructions: task.instructions,
+          resources: task.resources,
+          completedDate: task.completedDate,
+          actualDuration: task.actualDuration,
+          notes: task.notes,
+          aiGenerated: task.aiGenerated
+        },
+        progress: plan.progress,
+        message: 'Task updated successfully'
+      }
+    });
+  } catch (err) {
+    console.error('Update task error:', err);
+    return res.status(500).json({ error: 'Failed to update task' });
+  }
+};
+
+// Delete a task from a plan
+exports.deleteTask = async (req, res) => {
+  try {
+    const farmerId = req.user.id;
+    const { id, taskId } = req.params;
+
+    const plan = await Plan.findOne({ _id: id, farmerId });
+    if (!plan) {
+      return res.status(404).json({ error: 'Plan not found' });
+    }
+
+    const task = plan.tasks.id(taskId);
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Remove the task
+    task.remove();
+    await plan.save();
+
+    return res.json({
+      success: true,
+      data: {
+        progress: plan.progress,
+        message: 'Task deleted successfully'
+      }
+    });
+  } catch (err) {
+    console.error('Delete task error:', err);
+    return res.status(500).json({ error: 'Failed to delete task' });
+  }
+};
+
+// Get all tasks for a plan (separate endpoint if needed)
+exports.getTasks = async (req, res) => {
+  try {
+    const farmerId = req.user.id;
+    const { id } = req.params;
+    const { status, type, priority } = req.query;
+
+    const plan = await Plan.findOne({ _id: id, farmerId });
+    if (!plan) {
+      return res.status(404).json({ error: 'Plan not found' });
+    }
+
+    let tasks = plan.tasks;
+
+    // Apply filters if provided
+    if (status) {
+      tasks = tasks.filter(task => task.status === status);
+    }
+    if (type) {
+      tasks = tasks.filter(task => task.type === type);
+    }
+    if (priority) {
+      tasks = tasks.filter(task => task.priority === priority);
+    }
+
+    const formattedTasks = tasks.map(task => ({
+      id: task._id,
+      title: task.title,
+      description: task.description,
+      type: task.type,
+      priority: task.priority,
+      status: task.status,
+      scheduledDate: task.scheduledDate,
+      estimatedDuration: task.estimatedDuration,
+      instructions: task.instructions,
+      resources: task.resources,
+      completedDate: task.completedDate,
+      actualDuration: task.actualDuration,
+      notes: task.notes,
+      aiGenerated: task.aiGenerated
+    }));
+
+    return res.json({
+      success: true,
+      data: {
+        planId: plan._id,
+        planTitle: plan.title,
+        tasks: formattedTasks,
+        totalTasks: tasks.length
+      }
+    });
+  } catch (err) {
+    console.error('Get tasks error:', err);
+    return res.status(500).json({ error: 'Failed to fetch tasks' });
+  }
+};
+
+// Get plan statistics
+exports.getStats = async (req, res) => {
+  try {
+    const farmerId = req.user.id;
+
+    const totalPlans = await Plan.countDocuments({ farmerId });
+    const activePlans = await Plan.countDocuments({ farmerId, status: 'active' });
+    const completedPlans = await Plan.countDocuments({ farmerId, status: 'completed' });
+
+    // Get plans with task statistics
+    const plans = await Plan.find({ farmerId });
+
+    let totalTasks = 0;
+    let completedTasks = 0;
+    let overdueTasks = 0;
+    let upcomingTasks = 0;
+
+    const now = new Date();
+    const nextWeek = new Date(now.getTime() + (7 * 24 * 60 * 60 * 1000));
+
+    plans.forEach(plan => {
+      plan.tasks.forEach(task => {
+        totalTasks++;
+        if (task.status === 'completed') {
+          completedTasks++;
+        }
+        if (task.status !== 'completed' && task.status !== 'skipped' && new Date(task.scheduledDate) < now) {
+          overdueTasks++;
+        }
+        if (task.status === 'pending' && new Date(task.scheduledDate) >= now && new Date(task.scheduledDate) <= nextWeek) {
+          upcomingTasks++;
+        }
+      });
+    });
+
+    return res.json({
+      success: true,
+      data: {
+        plans: {
+          total: totalPlans,
+          active: activePlans,
+          completed: completedPlans,
+          draft: totalPlans - activePlans - completedPlans
+        },
+        tasks: {
+          total: totalTasks,
+          completed: completedTasks,
+          overdue: overdueTasks,
+          upcoming: upcomingTasks,
+          completionRate: totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+        }
+      }
+    });
+  } catch (err) {
+    console.error('Get stats error:', err);
+    return res.status(500).json({ error: 'Failed to fetch statistics' });
+  }
+};
+
+// ==================== HELPER FUNCTIONS ====================
+
+// Enhanced helper function for AI plan generation
+async function generatePlanTasks(planId, planData) {
+  try {
+    console.log(`Generating AI tasks for plan ${planId}`);
+
+    // Call Gemini service for plan generation
+    const aiResponse = await geminiService.generateFarmingPlan(planData);
+
+    const plan = await Plan.findById(planId);
+    if (!plan) {
+      throw new Error('Plan not found');
+    }
+
+    // Update plan with AI-generated content
+    if (aiResponse.tasks && aiResponse.tasks.length > 0) {
+      plan.tasks = aiResponse.tasks.map(task => ({
+        ...task,
+        aiGenerated: true
+      }));
+      console.log(`Added ${aiResponse.tasks.length} AI-generated tasks`);
+    }
+
+    if (aiResponse.recommendations && aiResponse.recommendations.length > 0) {
+      plan.aiRecommendations = aiResponse.recommendations;
+      console.log(`Added ${aiResponse.recommendations.length} AI recommendations`);
+    }
+
+    if (aiResponse.resourceRequirements && aiResponse.resourceRequirements.length > 0) {
+      plan.resourceRequirements = aiResponse.resourceRequirements;
+      console.log(`Added ${aiResponse.resourceRequirements.length} resource requirements`);
+    }
+
+    await plan.save();
+    console.log(`Plan ${planId} updated with AI content`);
+
+  } catch (error) {
+    console.error(`AI plan generation failed for ${planId}:`, error);
+    throw error;
+  }
+}
+
+// Fallback function for basic plan templates
+async function generateBasicPlanTasks(planId, planType, startDate, duration) {
+  const plan = await Plan.findById(planId);
+  if (!plan) return;
+
+  let basicTasks = [];
+
+  switch (planType) {
+    case 'complete_season':
+      basicTasks = generateCompleteSeasonTasks(startDate, duration);
+      break;
+    case 'irrigation':
+      basicTasks = generateIrrigationTasks(startDate, duration);
+      break;
+    case 'fertilizer':
+      basicTasks = generateFertilizerTasks(startDate, duration);
+      break;
+    case 'pest_control':
+      basicTasks = generatePestControlTasks(startDate, duration);
+      break;
+    case 'soil_health':
+      basicTasks = generateSoilHealthTasks(startDate, duration);
+      break;
+    case 'harvest_prep':
+      basicTasks = generateHarvestPrepTasks(startDate, duration);
+      break;
+    default:
+      basicTasks = generateGeneralTasks(startDate, duration);
+  }
+
+  plan.tasks = basicTasks;
+  await plan.save();
+}
+
+function generateCompleteSeasonTasks(startDate, duration) {
+  const tasks = [];
+  const start = new Date(startDate);
+
+  // Pre-planting
+  tasks.push({
+    title: 'Field Preparation',
+    description: 'Prepare field for planting season',
+    type: 'maintenance',
+    priority: 'high',
+    scheduledDate: start,
+    estimatedDuration: 6,
+    instructions: 'Clear field, till soil, and prepare planting beds.',
+    aiGenerated: false
+  });
+
+  // Planting
+  const plantDate = new Date(start.getTime() + (7 * 24 * 60 * 60 * 1000));
+  tasks.push({
+    title: 'Crop Planting',
+    description: 'Plant seeds or transplant seedlings',
+    type: 'planting',
+    priority: 'high',
+    scheduledDate: plantDate,
+    estimatedDuration: 8,
+    instructions: 'Plant seeds at recommended depth and spacing.',
+    aiGenerated: false
+  });
+
+  // Regular monitoring throughout season
+  for (let week = 2; week < Math.ceil(duration / 7) - 2; week++) {
+    const taskDate = new Date(start.getTime() + (week * 7 * 24 * 60 * 60 * 1000));
+    tasks.push({
+      title: `Week ${week} Monitoring`,
+      description: 'Weekly crop health assessment',
+      type: 'monitoring',
+      priority: 'medium',
+      scheduledDate: taskDate,
+      estimatedDuration: 2,
+      instructions: 'Check crop growth, pest activity, and irrigation needs.',
+      aiGenerated: false
+    });
+  }
+
+  // Harvest preparation
+  if (duration > 90) {
+    const harvestDate = new Date(start.getTime() + ((duration - 7) * 24 * 60 * 60 * 1000));
+    tasks.push({
+      title: 'Harvest Preparation',
+      description: 'Prepare for harvest activities',
+      type: 'harvesting',
+      priority: 'high',
+      scheduledDate: harvestDate,
+      estimatedDuration: 4,
+      instructions: 'Prepare harvesting equipment and storage facilities.',
+      aiGenerated: false
+    });
+  }
+
+  return tasks;
+}
+
+function generateIrrigationTasks(startDate, duration) {
+  const tasks = [];
+  const start = new Date(startDate);
+
+  // System check
+  tasks.push({
+    title: 'Irrigation System Check',
+    description: 'Inspect and test irrigation equipment',
+    type: 'maintenance',
+    priority: 'high',
+    scheduledDate: start,
+    estimatedDuration: 3,
+    instructions: 'Check all sprinklers, pipes, and pumps for proper operation.',
+    aiGenerated: false
+  });
+
+  // Weekly irrigation schedule
+  for (let week = 1; week <= Math.ceil(duration / 7); week++) {
+    const taskDate = new Date(start.getTime() + (week * 7 * 24 * 60 * 60 * 1000));
+    tasks.push({
+      title: `Week ${week} Irrigation`,
+      description: 'Monitor soil moisture and irrigate as needed',
+      type: 'irrigation',
+      priority: 'medium',
+      scheduledDate: taskDate,
+      estimatedDuration: 2,
+      instructions: 'Check soil moisture at 6 inches depth. Irrigate if moisture is below 50%.',
+      aiGenerated: false
+    });
+  }
+
+  return tasks;
+}
+
+function generateFertilizerTasks(startDate, duration) {
+  const tasks = [];
+  const start = new Date(startDate);
+
+  // Initial soil test
+  tasks.push({
+    title: 'Soil Testing',
+    description: 'Test soil for nutrient levels',
+    type: 'monitoring',
+    priority: 'high',
+    scheduledDate: start,
+    estimatedDuration: 2,
+    instructions: 'Collect soil samples and test for NPK levels, pH, and organic matter.',
+    aiGenerated: false
+  });
+
+  // Base application
+  const baseDate = new Date(start.getTime() + (3 * 24 * 60 * 60 * 1000));
+  tasks.push({
+    title: 'Base Fertilizer Application',
+    description: 'Apply base NPK fertilizer',
+    type: 'fertilizer',
+    priority: 'high',
+    scheduledDate: baseDate,
+    estimatedDuration: 3,
+    instructions: 'Apply 200kg/ha of NPK fertilizer and incorporate into soil.',
+    aiGenerated: false
+  });
+
+  // Mid-season application
+  if (duration > 30) {
+    const midDate = new Date(start.getTime() + (30 * 24 * 60 * 60 * 1000));
+    tasks.push({
+      title: 'Mid-Season Fertilizer',
+      description: 'Apply nitrogen top-dressing',
+      type: 'fertilizer',
+      priority: 'medium',
+      scheduledDate: midDate,
+      estimatedDuration: 2,
+      instructions: 'Apply 100kg/ha of urea as top-dressing.',
+      aiGenerated: false
+    });
+  }
+
+  return tasks;
+}
+
+function generatePestControlTasks(startDate, duration) {
+  const tasks = [];
+  const start = new Date(startDate);
+
+  // Initial assessment
+  tasks.push({
+    title: 'Pest Baseline Assessment',
+    description: 'Establish baseline pest and beneficial insect populations',
+    type: 'monitoring',
+    priority: 'high',
+    scheduledDate: start,
+    estimatedDuration: 2,
+    instructions: 'Conduct thorough field survey for existing pest issues and beneficial insects.',
+    aiGenerated: false
+  });
+
+  // Weekly monitoring
+  for (let week = 1; week <= Math.ceil(duration / 7); week++) {
+    const taskDate = new Date(start.getTime() + (week * 7 * 24 * 60 * 60 * 1000));
+    tasks.push({
+      title: `Week ${week} Pest Monitoring`,
+      description: 'Scout field for pest activity',
+      type: 'monitoring',
+      priority: 'medium',
+      scheduledDate: taskDate,
+      estimatedDuration: 1,
+      instructions: 'Check 10 random plants for signs of pest damage or disease.',
+      aiGenerated: false
+    });
+  }
+
+  return tasks;
+}
