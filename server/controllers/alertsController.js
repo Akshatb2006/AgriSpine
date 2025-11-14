@@ -2,7 +2,7 @@ const Alert = require('../models/Alert');
 
 exports.getAll = async (req, res) => {
     try{
-        const farmerID = req.user.id;
+        const farmerId = req.user.id;
         let alerts = await Alert.find({farmerId, $or: [{expiresAt: {$gt: new Date()}}]}).sort({createdAt: -1});
         if(alerts.length === 0){
             const seed = await Alert.insertMany([
