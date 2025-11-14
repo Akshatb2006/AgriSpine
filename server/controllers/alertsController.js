@@ -47,4 +47,33 @@ exports.getAll = async (req, res) => {
         console.log(`Alert fetch error: ${err.message}`);
         return res.status(500).json({success: false, error: 'Failed to fetch alerts'});
     }
+};
+
+exports.markRead = async (req, res) =>{
+    try{
+        const farmerId = req.user.id;
+        const {id} = req.params;
+        const updated = await Alert.findOneAndUpdate({ _id: id, farmerId }, { $set: { isRead: true } }, { new: true });
+        if (!updated) return res.status(404).json({ error: 'Alert not found' });
+        return res.status(200).json({ success: true, data: updated });
+    } catch (err) {
+        console.log(`Alert update error: ${err.message}`);
+        return res.status(500).json({ success: false, error: 'Failed to update alert' });
+    }
+};
+
+exports.subscribe = async (req,res) =>{
+    try {
+        const { alertTypes, notificationMethods } = req.body;
+        if (!alertTypes || !Array.isArray(alertTypes)) {
+          return res.status(400).json({ error: 'Alert types array is required' });
+        }
+        const validTypes = ['pest', 'disease', 'irrigation', 'weather', 'fertilizer', 'harvest'];
+        const invalid = alertTypes.filter(t => !validTypes.includes(t));
+        if (invalid.length) return res.status(400).json({ error: `Invalid alert types: ${invalid.join(', ')}` });
+        return res.json({ success: true, data: { alertTypes, notificationMethods: notificationMethods || ['push','sms'] }, message: 'Alert preferences updated successfully' });
+      } catch (err) {
+        console.error('Alert subscription error:', err);
+        return res.status(500).json({ error: 'Failed to update alert preferences' });
+      }
 }
