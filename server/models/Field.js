@@ -1,4 +1,3 @@
-// server/models/Field.js (Updated)
 const mongoose = require('mongoose');
 
 const FieldSchema = new mongoose.Schema({
@@ -23,13 +22,12 @@ const FieldSchema = new mongoose.Schema({
     organicMatter: Number,
     lastUpdated: Date
   },
-  // Remove coordinates for now since we're not using map
-  // coordinates: { type: [[Number]], default: [] },
+
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
 });
 
-// Update the updatedAt field before saving
+
 FieldSchema.pre('save', function(next) {
   this.updatedAt = Date.now();
   next();

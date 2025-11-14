@@ -1,4 +1,4 @@
-// server/models/Task.js - FIXED with correct enum values
+// serer/models/Task.js - FIXED with correct enum values
 const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema({
@@ -14,9 +14,9 @@ const TaskSchema = new mongoose.Schema({
       'fertilizer',
       'pesticide',
       'harvest',
-      'planting',      // Added
-      'monitoring',    // Added
-      'maintenance',   // Added
+      'planting',      
+      'monitoring',    
+      'maintenance',  
       'planning'       // Added
     ],
     required: true
