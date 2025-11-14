@@ -3,7 +3,6 @@ import { Mail, Lock, User, Phone, Sprout, Sun, Moon, X, AlertCircle } from 'luci
 import { useTheme } from '../../contexts/ThemeContext';
 import { authAPI } from '../../services/api';
 
-// Custom hook for persistent error handling
 const usePersistedError = () => {
   const [error, setError] = useState('');
   const [showError, setShowError] = useState(false);
