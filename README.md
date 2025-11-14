@@ -8,18 +8,23 @@ An AI-powered precision agriculture platform that empowers farmers with intellig
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Usage Guide](#usage-guide)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#️-technology-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Configuration](#️-configuration)
+- [Running the Application](#-running-the-application)
+- [Project Structure](#-project-structure)
+- [API Documentation](#-api-documentation)
+- [Usage Guide](#-usage-guide)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Authors](#-authors)
+- [Acknowledgments](#-acknowledgments)
+- [Support](#-support)
+- [Roadmap](#️-roadmap)
 
 ## 🌟 Overview
 
