@@ -13,13 +13,13 @@ const YieldSummaryChart = () => {
   const maxValue = Math.max(...yieldData.map(d => d.value));
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
           Yield Summary
           <Star className="ml-2 w-4 h-4 text-gray-400" />
         </h2>
-        <div className="bg-green-100/30 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+        <div className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">
           +8% YOC
         </div>
       </div>
@@ -29,7 +29,7 @@ const YieldSummaryChart = () => {
         <div className="h-32 flex items-end space-x-2">
           {yieldData.map((item, index) => (
             <div key={index} className="flex-1 flex flex-col items-center">
-              <div className="w-full bg-gray-200 rounded-t-sm relative overflow-hidden">
+              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-t-sm relative overflow-hidden">
                 <div 
                   className="bg-gradient-to-t from-green-500 to-green-400 rounded-t-sm transition-all duration-500 ease-out"
                   style={{ 
@@ -38,7 +38,7 @@ const YieldSummaryChart = () => {
                   }}
                 ></div>
               </div>
-              <span className="text-xs text-gray-500 mt-1">
+              <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                 {item.period}
               </span>
             </div>
@@ -46,7 +46,7 @@ const YieldSummaryChart = () => {
         </div>
 
         {/* Chart values */}
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
           <span>0</span>
           <span>5</span>
           <span>10</span>
@@ -55,9 +55,9 @@ const YieldSummaryChart = () => {
         </div>
 
         {/* Performance indicator */}
-        <div className="flex items-center justify-center space-x-2 p-3 bg-green-50/20 rounded-lg">
-          <TrendingUp size={16} className="text-green-600" />
-          <span className="text-green-700 text-sm font-medium">
+        <div className="flex items-center justify-center space-x-2 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+          <TrendingUp size={16} className="text-green-600 dark:text-green-400" />
+          <span className="text-green-700 dark:text-green-300 text-sm font-medium">
             Performance trending upward
           </span>
         </div>

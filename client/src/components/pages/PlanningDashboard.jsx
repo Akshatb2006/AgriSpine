@@ -102,16 +102,16 @@ const PlanningDashboard = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active':
-        return 'bg-blue-100/20 text-blue-700';
+        return 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300';
       case 'completed':
-        return 'bg-green-100/20 text-green-700';
+        return 'bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300';
       case 'pending':
       case 'draft':
-        return 'bg-yellow-100/20 text-yellow-700';
+        return 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300';
       case 'overdue':
-        return 'bg-red-100/20 text-red-700';
+        return 'bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300';
       default:
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
     }
   };
 
@@ -145,13 +145,13 @@ const PlanningDashboard = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <div className="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+          <div className="bg-gray-100 dark:bg-gray-800 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
             <Calendar size={32} className="text-gray-400" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
             No Fields Available
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             You need to add fields before creating farming plans.
           </p>
           <button
@@ -170,10 +170,10 @@ const PlanningDashboard = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Farm Planning Dashboard
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             Create and manage AI-powered farming plans for optimal yields
           </p>
         </div>
@@ -190,8 +190,8 @@ const PlanningDashboard = () => {
       </div>
 
       {/* Field Selector */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           Planning for Field
         </h2>
         <FieldSelector className="max-w-md" />
@@ -199,50 +199,50 @@ const PlanningDashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center">
-            <div className="bg-blue-100/20 rounded-lg p-3">
+            <div className="bg-blue-100 dark:bg-blue-900/20 rounded-lg p-3">
               <Calendar className="w-6 h-6 text-blue-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Total Plans</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Plans</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center">
-            <div className="bg-green-100/20 rounded-lg p-3">
+            <div className="bg-green-100 dark:bg-green-900/20 rounded-lg p-3">
               <CheckCircle className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Active Plans</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.active}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Active Plans</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.active}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center">
-            <div className="bg-yellow-100/20 rounded-lg p-3">
+            <div className="bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-3">
               <Clock className="w-6 h-6 text-yellow-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Pending</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.pending}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Pending</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.pending}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
           <div className="flex items-center">
-            <div className="bg-purple-100/20 rounded-lg p-3">
+            <div className="bg-purple-100 dark:bg-purple-900/20 rounded-lg p-3">
               <TrendingUp className="w-6 h-6 text-purple-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Avg Progress</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.avgProgress}%</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Avg Progress</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.avgProgress}%</p>
             </div>
           </div>
         </div>
@@ -250,10 +250,10 @@ const PlanningDashboard = () => {
 
       {/* Error Display */}
       {error && (
-        <div className="bg-red-50/20 border border-red-200 rounded-lg p-4">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
           <div className="flex items-center space-x-2">
             <AlertCircle size={16} className="text-red-500" />
-            <span className="text-red-700 text-sm">{error}</span>
+            <span className="text-red-700 dark:text-red-300 text-sm">{error}</span>
             <button
               onClick={loadPlans}
               className="ml-auto text-red-600 hover:text-red-800 text-sm font-medium"
@@ -265,7 +265,7 @@ const PlanningDashboard = () => {
       )}
 
       {/* Filters and Search */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
@@ -273,7 +273,7 @@ const PlanningDashboard = () => {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900"
+                className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -293,12 +293,12 @@ const PlanningDashboard = () => {
                 placeholder="Search plans..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900"
+                className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
             </div>
             <button 
               onClick={loadPlans}
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800:text-gray-200"
+              className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
             >
               <Download size={16} />
               <span>Refresh</span>
@@ -308,9 +308,9 @@ const PlanningDashboard = () => {
       </div>
 
       {/* Plans List */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
             Your Plans ({filteredPlans.length})
           </h2>
         </div>
@@ -319,16 +319,16 @@ const PlanningDashboard = () => {
           <div className="p-6">
             <div className="flex items-center justify-center py-8">
               <Loader2 size={32} className="text-green-600 animate-spin" />
-              <span className="ml-2 text-gray-600">Loading plans...</span>
+              <span className="ml-2 text-gray-600 dark:text-gray-400">Loading plans...</span>
             </div>
           </div>
         ) : filteredPlans.length === 0 ? (
           <div className="p-12 text-center">
             <Calendar size={48} className="text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
               No plans found
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               {filterStatus === 'all' ? 
                 "Create your first farming plan to get started." :
                 `No plans with status "${filterStatus}" found.`
@@ -342,16 +342,16 @@ const PlanningDashboard = () => {
             </button>
           </div>
         ) : (
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-gray-200 dark:divide-gray-700">
             {filteredPlans.map((plan) => (
-              <div key={plan.id} className="p-6 hover:bg-gray-50:bg-gray-700 transition-colors">
+              <div key={plan.id} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                 <div className="flex items-center justify-between">
                   <div className="flex items-start space-x-4 flex-1">
                     <div className="text-2xl">{getTypeIcon(plan.planType)}</div>
                     
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="text-lg font-medium text-gray-900">
+                        <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                           {plan.title}
                         </h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(plan.status)}`}>
@@ -359,7 +359,7 @@ const PlanningDashboard = () => {
                         </span>
                       </div>
                       
-                      <div className="flex items-center space-x-6 text-sm text-gray-500 mb-3">
+                      <div className="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400 mb-3">
                         <span>Field: {plan.fieldName || 'Unknown Field'}</span>
                         <span>{plan.tasksCompleted || 0}/{plan.tasksTotal || 0} tasks completed</span>
                         <span>{new Date(plan.startDate).toLocaleDateString()} - {new Date(plan.endDate).toLocaleDateString()}</span>
@@ -368,10 +368,10 @@ const PlanningDashboard = () => {
                       {/* Progress Bar */}
                       <div className="mt-3">
                         <div className="flex items-center justify-between text-sm mb-1">
-                          <span className="text-gray-600">Progress</span>
-                          <span className="font-medium text-gray-900">{plan.progress || 0}%</span>
+                          <span className="text-gray-600 dark:text-gray-400">Progress</span>
+                          <span className="font-medium text-gray-900 dark:text-white">{plan.progress || 0}%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <div 
                             className="bg-green-500 h-2 rounded-full transition-all duration-300"
                             style={{ width: `${plan.progress || 0}%` }}
@@ -384,20 +384,20 @@ const PlanningDashboard = () => {
                   <div className="flex items-center space-x-2 ml-4">
                     <button
                       onClick={() => navigate(`/plans/${plan.id}`)}
-                      className="p-2 text-gray-400 hover:text-blue-600:text-blue-400 transition-colors"
+                      className="p-2 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       title="View Plan"
                     >
                       <Eye size={16} />
                     </button>
                     <button 
-                      className="p-2 text-gray-400 hover:text-green-600:text-green-400 transition-colors"
+                      className="p-2 text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                       title="Edit Plan"
                     >
                       <Edit3 size={16} />
                     </button>
                     <button 
                       onClick={() => handleDeletePlan(plan.id)}
-                      className="p-2 text-gray-400 hover:text-red-600:text-red-400 transition-colors"
+                      className="p-2 text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                       title="Delete Plan"
                     >
                       <Trash2 size={16} />

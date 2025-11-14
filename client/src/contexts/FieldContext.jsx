@@ -34,7 +34,7 @@ export const FieldProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await fieldsAPI.getAllFields();
-
+      
       if (response.data.success && response.data.data.length > 0) {
         const fieldsData = response.data.data;
         setFields(fieldsData);
@@ -86,7 +86,7 @@ export const FieldProvider = ({ children }) => {
   };
 
   const updateField = (updatedField) => {
-    setFields(prev => prev.map(field =>
+    setFields(prev => prev.map(field => 
       field.id === updatedField.id ? updatedField : field
     ));
     if (selectedField && selectedField.id === updatedField.id) {

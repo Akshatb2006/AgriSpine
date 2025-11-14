@@ -6,14 +6,14 @@ const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden bg-white">
+    <div className="h-screen flex overflow-hidden bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
+      
       {/* Main content */}
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         <Header setSidebarOpen={setSidebarOpen} />
-
+        
         {/* Page content */}
         <main className="flex-1 relative overflow-y-auto focus:outline-none">
           <div className="py-6">

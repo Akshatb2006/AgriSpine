@@ -4,7 +4,27 @@ import { useField } from '../../contexts/FieldContext';
 import { useNavigate } from 'react-router-dom';
 import { dashboardAPI, tasksAPI, alertsAPI, predictionsAPI } from '../../services/api';
 import WelcomeSection from '../dashboard/WelcomeSection';
-// No icon imports - using emojis instead
+import { 
+  Plus, 
+  TrendingUp, 
+  Calendar, 
+  Target, 
+  Sparkles, 
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Brain,
+  Loader2,
+  ChevronRight,
+  Droplets,
+  Map,
+  Activity,
+  Zap,
+  BarChart3,
+  Eye,
+  MapPin,
+  ArrowRight
+} from 'lucide-react';
 
 const Dashboard = () => {
   const { selectedField, hasFields, loading: fieldsLoading } = useField();
@@ -83,7 +103,7 @@ const Dashboard = () => {
   if (fieldsLoading || loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-4xl animate-pulse">⏳</div>
+        <Loader2 size={48} className="text-green-600 animate-spin" />
       </div>
     );
   }
@@ -92,25 +112,25 @@ const Dashboard = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center max-w-md">
-          <div className="bg-gray-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-            <span className="text-4xl">➕</span>
+          <div className="bg-green-100 dark:bg-green-900/20 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+            <Plus size={32} className="text-green-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Welcome to Farmer's Desk!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             To get started, you'll need to add your first field.
           </p>
           <div className="space-y-3">
             <button
               onClick={() => navigate('/fields')}
-              className="w-full bg-black hover:opacity-90 text-white px-6 py-3 rounded font-medium transition-opacity"
+              className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
               Add Your First Field
             </button>
             <button
               onClick={() => navigate('/predictions/new')}
-              className="w-full bg-black hover:opacity-90 text-white px-6 py-3 rounded font-medium transition-opacity"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
               Try AI Prediction Demo
             </button>
@@ -132,26 +152,27 @@ const Dashboard = () => {
     <div className="space-y-6">
       {/* AI Welcome Banner */}
       {showAIWelcome && aiTasks.length > 0 && (
-        <div className="bg-gray-100 border-2 border-black rounded p-6 relative">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-2 border-purple-200 dark:border-purple-800 rounded-xl p-6 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-200 dark:bg-purple-800 opacity-20 rounded-full -mr-16 -mt-16"></div>
           <div className="relative flex items-start justify-between">
             <div className="flex items-start space-x-4">
-              <div className="bg-black text-white p-3 rounded">
-                <span className="text-2xl">✨</span>
+              <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-xl">
+                <Sparkles size={24} />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                   Your Farm is AI-Powered! 🎉
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   We've analyzed your farm and created {aiTasks.length} personalized tasks and {alerts.length} smart alerts based on your crops, soil type, and location.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center px-3 py-1 bg-black text-white rounded text-sm">
-                    <span className="mr-1">✓</span>
+                  <span className="inline-flex items-center px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm">
+                    <CheckCircle size={14} className="mr-1" />
                     {aiTasks.length} AI Tasks
                   </span>
-                  <span className="inline-flex items-center px-3 py-1 bg-black text-white rounded text-sm">
-                    <span className="mr-1">✓</span>
+                  <span className="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm">
+                    <CheckCircle size={14} className="mr-1" />
                     Smart Monitoring
                   </span>
                 </div>
@@ -159,7 +180,7 @@ const Dashboard = () => {
             </div>
             <button
               onClick={dismissAIWelcome}
-              className="text-gray-600 hover:text-gray-900:text-slate-100 text-2xl leading-none"
+              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-2xl leading-none"
             >
               ×
             </button>
@@ -175,16 +196,16 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button
             onClick={() => navigate('/predictions/new')}
-            className="flex items-center space-x-3 p-4 bg-gray-100 border border-black rounded hover:opacity-90 transition-opacity"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg hover:from-blue-100 hover:to-indigo-100 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 transition-colors"
           >
-            <div className="bg-black text-white p-2 rounded">
-              <span className="text-lg">📈</span>
+            <div className="bg-blue-600 text-white p-2 rounded-lg">
+              <TrendingUp size={20} />
             </div>
             <div className="text-left">
-              <h3 className="font-medium text-gray-900">
+              <h3 className="font-medium text-blue-900 dark:text-blue-100">
                 Create Prediction
               </h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-blue-700 dark:text-blue-300">
                 AI-powered yield forecast
               </p>
             </div>
@@ -192,16 +213,16 @@ const Dashboard = () => {
 
           <button
             onClick={() => navigate('/plans/new')}
-            className="flex items-center space-x-3 p-4 bg-gray-100 border border-black rounded hover:opacity-90 transition-opacity"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 transition-colors"
           >
-            <div className="bg-black text-white p-2 rounded">
-              <span className="text-lg">📅</span>
+            <div className="bg-green-600 text-white p-2 rounded-lg">
+              <Calendar size={20} />
             </div>
             <div className="text-left">
-              <h3 className="font-medium text-gray-900">
+              <h3 className="font-medium text-green-900 dark:text-green-100">
                 Generate Plan
               </h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-green-700 dark:text-green-300">
                 Smart farming schedule
               </p>
             </div>
@@ -209,16 +230,16 @@ const Dashboard = () => {
 
           <button
             onClick={() => navigate('/fields')}
-            className="flex items-center space-x-3 p-4 bg-gray-100 border border-black rounded hover:opacity-90 transition-opacity"
+            className="flex items-center space-x-3 p-4 bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 border border-purple-200 dark:border-purple-800 rounded-lg hover:from-purple-100 hover:to-violet-100 dark:hover:from-purple-900/30 dark:hover:to-violet-900/30 transition-colors"
           >
-            <div className="bg-black text-white p-2 rounded">
-              <span className="text-lg">🎯</span>
+            <div className="bg-purple-600 text-white p-2 rounded-lg">
+              <Target size={20} />
             </div>
             <div className="text-left">
-              <h3 className="font-medium text-gray-900">
+              <h3 className="font-medium text-purple-900 dark:text-purple-100">
                 Manage Fields
               </h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-purple-700 dark:text-purple-300">
                 View all fields
               </p>
             </div>
@@ -232,22 +253,23 @@ const Dashboard = () => {
         <div className="lg:col-span-2 space-y-6">
           {/* AI Predictions Section */}
           {predictions.length > 0 && (
-            <div className="bg-white rounded border border-black border-opacity-20 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-2">
-                  <span className="text-xl">🤖</span>
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <Brain size={20} className="text-purple-600" />
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                     AI Predictions
                   </h2>
-                  <span className="px-2 py-1 bg-black text-white text-xs rounded">
+                  <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-full">
                     {predictions.length}
                   </span>
                 </div>
                 <button
                   onClick={() => navigate('/predictions')}
-                  className="text-sm text-black hover:opacity-80 flex items-center"
+                  className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 flex items-center"
                 >
-                  View All →
+                  View All
+                  <ChevronRight size={16} className="ml-1" />
                 </button>
               </div>
 
@@ -265,11 +287,11 @@ const Dashboard = () => {
 
               {predictions.length === 0 && (
                 <div className="text-center py-8">
-                  <span className="text-5xl mx-auto mb-3 block">🤖</span>
-                  <p className="text-gray-600">No predictions yet</p>
+                  <Brain size={48} className="text-gray-300 mx-auto mb-3" />
+                  <p className="text-gray-500 dark:text-gray-400">No predictions yet</p>
                   <button
                     onClick={() => navigate('/predictions/new')}
-                    className="mt-4 text-sm text-black hover:opacity-80"
+                    className="mt-4 text-sm text-purple-600 hover:text-purple-700"
                   >
                     Create your first prediction
                   </button>
@@ -279,32 +301,33 @@ const Dashboard = () => {
           )}
 
           {/* Tasks Section */}
-          <div className="bg-white rounded border border-purple-600 border-opacity-20 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
-                <span className="text-xl">📅</span>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <Calendar size={20} className="text-blue-600" />
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Your Tasks
                 </h2>
-                <span className="px-2 py-1 bg-purple-600 text-white text-xs rounded">
+                <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-full">
                   {pendingTasks.length}
                 </span>
               </div>
               <button
                 onClick={() => navigate('/plans')}
-                className="text-sm text-purple-600 hover:opacity-80 flex items-center"
+                className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 flex items-center"
               >
-                View All →
+                View All
+                <ChevronRight size={16} className="ml-1" />
               </button>
             </div>
 
             {pendingTasks.length === 0 ? (
               <div className="text-center py-8">
-                <span className="text-5xl mx-auto mb-3 block">✓</span>
-                <p className="text-gray-600">No pending tasks</p>
+                <CheckCircle size={48} className="text-gray-300 mx-auto mb-3" />
+                <p className="text-gray-500 dark:text-gray-400">No pending tasks</p>
                 <button
                   onClick={() => navigate('/plans/new')}
-                  className="mt-4 text-sm text-purple-600 hover:opacity-80"
+                  className="mt-4 text-sm text-blue-600 hover:text-blue-700"
                 >
                   Create a new plan
                 </button>
@@ -320,19 +343,20 @@ const Dashboard = () => {
 
           {/* Alerts Section */}
           {urgentAlerts.length > 0 && (
-            <div className="bg-white rounded border border-black border-opacity-20 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-2">
-                  <span className="text-xl">⚠️</span>
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <AlertTriangle size={20} className="text-red-600" />
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Urgent Alerts
                   </h2>
                 </div>
                 <button
                   onClick={() => navigate('/alerts')}
-                  className="text-sm text-black hover:opacity-80 flex items-center"
+                  className="text-sm text-red-600 hover:text-red-700 dark:text-red-400 flex items-center"
                 >
-                  View All →
+                  View All
+                  <ChevronRight size={16} className="ml-1" />
                 </button>
               </div>
 
@@ -348,52 +372,52 @@ const Dashboard = () => {
         {/* Right Column - Stats & Info */}
         <div className="space-y-6">
           {/* Farm Stats */}
-          <div className="bg-white rounded border border-purple-600 border-opacity-20 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-              <span className="text-lg mr-2">📊</span>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+              <BarChart3 size={18} className="mr-2 text-green-600" />
               Farm Overview
             </h3>
             
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-gray-100 rounded">
+              <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <div>
-                  <p className="text-sm text-gray-600">Total Area</p>
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Total Area</p>
+                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                     {dashboardData?.totalArea || 0} <span className="text-sm">acres</span>
                   </p>
                 </div>
-                <span className="text-3xl opacity-50">🎯</span>
+                <Target size={32} className="text-green-600 opacity-50" />
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-gray-100 rounded">
+              <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                 <div>
-                  <p className="text-sm text-gray-600">Active Fields</p>
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Active Fields</p>
+                  <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                     {dashboardData?.activeFields || 0}
                   </p>
                 </div>
-                <span className="text-3xl opacity-50">🗺️</span>
+                <Map size={32} className="text-blue-600 opacity-50" />
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-gray-100 rounded">
+              <div className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                 <div>
-                  <p className="text-sm text-gray-600">Pending Tasks</p>
-                  <p className="text-2xl font-bold text-black">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Pending Tasks</p>
+                  <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                     {pendingTasks.length}
                   </p>
                 </div>
-                <span className="text-3xl opacity-50">⏰</span>
+                <Clock size={32} className="text-orange-600 opacity-50" />
               </div>
 
               {predictions.length > 0 && (
-                <div className="flex items-center justify-between p-3 bg-gray-100 rounded">
+                <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                   <div>
-                    <p className="text-sm text-gray-600">AI Predictions</p>
-                    <p className="text-2xl font-bold text-black">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">AI Predictions</p>
+                    <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
                       {predictions.length}
                     </p>
                   </div>
-                  <span className="text-3xl opacity-50">🤖</span>
+                  <Brain size={32} className="text-purple-600 opacity-50" />
                 </div>
               )}
             </div>
@@ -401,37 +425,37 @@ const Dashboard = () => {
 
           {/* Field Info */}
           {selectedField && (
-            <div className="bg-white rounded border border-black border-opacity-20 p-6">
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <span className="text-lg mr-2">📍</span>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+              <h3 className="font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+                <MapPin size={18} className="mr-2 text-blue-600" />
                 {selectedField.name}
               </h3>
               
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Crop:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Crop:</span>
+                  <span className="font-medium text-gray-900 dark:text-white">
                     {selectedField.crop || 'Not planted'}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Area:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Area:</span>
+                  <span className="font-medium text-gray-900 dark:text-white">
                     {selectedField.area} acres
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Soil Type:</span>
-                  <span className="font-medium text-gray-900">
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Soil Type:</span>
+                  <span className="font-medium text-gray-900 dark:text-white">
                     {selectedField.soilType || 'Unknown'}
                   </span>
                 </div>
                 
                 <button
                   onClick={() => navigate(`/fields/${selectedField.id}`)}
-                  className="w-full mt-4 bg-black hover:opacity-90 text-white px-4 py-2 rounded text-sm font-medium transition-opacity flex items-center justify-center"
+                  className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center"
                 >
-                  <span className="mr-2">👁️</span>
+                  <Eye size={16} className="mr-2" />
                   View Details
                 </button>
               </div>
@@ -439,19 +463,20 @@ const Dashboard = () => {
           )}
 
           {/* AI Assistant */}
-          <div className="bg-gray-100 rounded border border-black p-6">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800 p-6">
             <div className="flex items-center space-x-2 mb-3">
-              <span className="text-lg">⚡</span>
-              <h3 className="font-semibold text-gray-900 flex items-center">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <h3 className="font-semibold text-gray-900 dark:text-white flex items-center">
+                <Zap size={18} className="mr-2 text-purple-600" />
                 AI Assistant
               </h3>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
               Your farm is being monitored 24/7. Get instant predictions and recommendations.
             </p>
             <button
               onClick={() => navigate('/predictions/new')}
-              className="w-full bg-black hover:opacity-90 text-white px-4 py-2 rounded text-sm font-medium transition-opacity"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
               Get New Insights
             </button>
@@ -465,16 +490,22 @@ const Dashboard = () => {
 // Prediction Card Component
 const PredictionCard = ({ prediction, onClick }) => {
   const getStatusColor = (status) => {
-    return 'border-black bg-gray-100';
+    const colors = {
+      completed: 'border-green-500 bg-green-50 dark:bg-green-900/20',
+      processing: 'border-blue-500 bg-blue-50 dark:bg-blue-900/20',
+      pending: 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20',
+      failed: 'border-red-500 bg-red-50 dark:bg-red-900/20'
+    };
+    return colors[status] || colors.pending;
   };
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'completed': return '✓';
-      case 'processing': return '⏳';
-      case 'pending': return '⏰';
-      case 'failed': return '❌';
-      default: return '⏰';
+      case 'completed': return <CheckCircle size={14} className="text-green-600" />;
+      case 'processing': return <Loader2 size={14} className="text-blue-600 animate-spin" />;
+      case 'pending': return <Clock size={14} className="text-yellow-600" />;
+      case 'failed': return <AlertTriangle size={14} className="text-red-600" />;
+      default: return <Clock size={14} className="text-gray-600" />;
     }
   };
 
@@ -487,27 +518,27 @@ const PredictionCard = ({ prediction, onClick }) => {
   };
 
   return (
-    <div className={`p-4 border-l-4 rounded ${getStatusColor(prediction.status)} ${onClick ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''}`} onClick={onClick}>
+    <div className={`p-4 border-l-4 rounded-lg ${getStatusColor(prediction.status)} ${onClick ? 'cursor-pointer hover:shadow-md transition-shadow' : ''}`} onClick={onClick}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center space-x-2 mb-1">
             <span className="text-2xl">{getCropIcon(prediction.cropType)}</span>
-            <h4 className="font-medium text-gray-900 capitalize">
+            <h4 className="font-medium text-gray-900 dark:text-white capitalize">
               {prediction.cropType} Prediction
             </h4>
-            <span className="flex items-center space-x-1 px-2 py-0.5 bg-white rounded text-xs">
-              <span>{getStatusIcon(prediction.status)}</span>
+            <span className="flex items-center space-x-1 px-2 py-0.5 bg-white dark:bg-gray-800 rounded-full text-xs">
+              {getStatusIcon(prediction.status)}
               <span className="capitalize">{prediction.status}</span>
             </span>
           </div>
           
           {prediction.fieldName && (
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
               Field: {prediction.fieldName}
             </p>
           )}
           
-          <div className="flex items-center space-x-4 text-xs text-gray-600">
+          <div className="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">
             {prediction.status === 'completed' && prediction.predictedYield && (
               <>
                 <span>Yield: {prediction.predictedYield.toLocaleString()} kg/ha</span>
@@ -525,7 +556,7 @@ const PredictionCard = ({ prediction, onClick }) => {
               {prediction.tags.slice(0, 2).map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2 py-0.5 bg-black text-white rounded text-xs"
+                  className="px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs"
                 >
                   {tag}
                 </span>
@@ -535,8 +566,8 @@ const PredictionCard = ({ prediction, onClick }) => {
         </div>
         
         {prediction.status === 'completed' && onClick && (
-          <button className="ml-2 p-2 text-black hover:bg-gray-200:bg-gray-700 rounded transition-colors">
-            <span>→</span>
+          <button className="ml-2 p-2 text-purple-600 hover:bg-purple-100 dark:hover:bg-purple-900/20 rounded-lg transition-colors">
+            <ArrowRight size={16} />
           </button>
         )}
       </div>
@@ -560,39 +591,46 @@ const TaskCard = ({ task, onRefresh }) => {
     }
   };
 
-  const typeEmojis = {
-    irrigation: '💧',
-    fertilizer: '🌱',
-    pesticide: '🐛',
-    harvest: '🌾',
-    planting: '🌰',
-    monitoring: '👀'
+  const priorityColors = {
+    critical: 'border-red-500 bg-red-50 dark:bg-red-900/20',
+    high: 'border-orange-500 bg-orange-50 dark:bg-orange-900/20',
+    medium: 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20',
+    low: 'border-green-500 bg-green-50 dark:bg-green-900/20'
   };
 
-  const typeEmoji = typeEmojis[task.type] || '📋';
+  const typeIcons = {
+    irrigation: Droplets,
+    fertilizer: Sparkles,
+    pesticide: AlertTriangle,
+    harvest: TrendingUp,
+    planting: Target,
+    monitoring: Activity
+  };
+
+  const TypeIcon = typeIcons[task.type] || Calendar;
 
   return (
-    <div className="p-4 border-l-4 border-black bg-gray-100 rounded">
+    <div className={`p-4 border-l-4 rounded-lg ${priorityColors[task.priority] || priorityColors.medium}`}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center space-x-2 mb-1">
-            <span className="text-lg">{typeEmoji}</span>
-            <h4 className="font-medium text-gray-900">
+            <TypeIcon size={14} className="text-gray-600 dark:text-gray-400" />
+            <h4 className="font-medium text-gray-900 dark:text-white">
               {task.title}
             </h4>
             {(task.aiGenerated || task.initialSetup) && (
-              <span className="inline-flex items-center px-2 py-0.5 bg-black text-white text-xs rounded">
-                <span className="mr-1">🤖</span>
+              <span className="inline-flex items-center px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">
+                <Brain size={10} className="mr-1" />
                 AI
               </span>
             )}
           </div>
           {task.description && (
-            <p className="text-sm text-gray-600 mb-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
               {task.description}
             </p>
           )}
-          <div className="flex items-center space-x-3 text-xs text-gray-600">
+          <div className="flex items-center space-x-3 text-xs text-gray-500 dark:text-gray-400">
             <span className="capitalize">{task.type}</span>
             <span>•</span>
             <span className="capitalize">{task.priority} priority</span>
@@ -609,9 +647,9 @@ const TaskCard = ({ task, onRefresh }) => {
           <button
             onClick={() => handleStatusUpdate('completed')}
             disabled={updating}
-            className="ml-4 p-2 text-black hover:bg-gray-200:bg-gray-700 rounded transition-colors disabled:opacity-50"
+            className="ml-4 p-2 text-green-600 hover:bg-green-100 dark:hover:bg-green-900/20 rounded-lg transition-colors disabled:opacity-50"
           >
-            {updating ? <span className="animate-pulse">⏳</span> : <span>✓</span>}
+            {updating ? <Loader2 size={16} className="animate-spin" /> : <CheckCircle size={16} />}
           </button>
         )}
       </div>
@@ -621,23 +659,30 @@ const TaskCard = ({ task, onRefresh }) => {
 
 // Alert Card Component
 const AlertCard = ({ alert }) => {
+  const severityColors = {
+    critical: 'border-red-500 bg-red-50 dark:bg-red-900/20',
+    high: 'border-orange-500 bg-orange-50 dark:bg-orange-900/20',
+    medium: 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20',
+    low: 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+  };
+
   return (
-    <div className="p-4 border-l-4 border-black bg-gray-100 rounded">
+    <div className={`p-4 border-l-4 rounded-lg ${severityColors[alert.severity] || severityColors.low}`}>
       <div className="flex items-start space-x-3">
-        <span className="text-xl flex-shrink-0 mt-0.5">⚠️</span>
+        <AlertTriangle size={20} className="text-gray-600 dark:text-gray-400 flex-shrink-0 mt-0.5" />
         <div className="flex-1">
-          <h4 className="font-medium text-gray-900 mb-1">
+          <h4 className="font-medium text-gray-900 dark:text-white mb-1">
             {alert.title}
           </h4>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             {alert.description}
           </p>
           {alert.recommendations && alert.recommendations.length > 0 && (
             <div className="mt-2">
-              <p className="text-xs font-medium text-gray-700 mb-1">
+              <p className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Recommended Action:
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 • {alert.recommendations[0]}
               </p>
             </div>

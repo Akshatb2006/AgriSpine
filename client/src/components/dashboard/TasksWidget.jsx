@@ -20,9 +20,9 @@ const TasksWidget = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
           Upcoming Tasks
           <Star className="ml-2 w-4 h-4 text-gray-400" />
         </h2>
@@ -34,16 +34,16 @@ const TasksWidget = () => {
           return (
             <div 
               key={task.id} 
-              className="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50:bg-gray-700 transition-colors cursor-pointer"
+              className="flex items-center space-x-3 p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
             >
-              <div className="bg-blue-100/30 p-2 rounded-lg">
-                <Icon size={16} className="text-blue-600" />
+              <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
+                <Icon size={16} className="text-blue-600 dark:text-blue-400" />
               </div>
               <div className="flex-1">
-                <h3 className="font-medium text-gray-900 text-sm">
+                <h3 className="font-medium text-gray-900 dark:text-white text-sm">
                   {task.title}
                 </h3>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   Due: {task.dueDate}
                 </p>
               </div>

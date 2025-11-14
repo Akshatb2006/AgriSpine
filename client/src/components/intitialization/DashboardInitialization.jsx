@@ -205,18 +205,18 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
 
   if (status === 'failed') {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-8">
           <div className="text-center">
-            <div className="bg-red-100/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <div className="bg-red-100 dark:bg-red-900/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
               <AlertTriangle size={32} className="text-red-600" />
             </div>
             
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               Initialization Issue
             </h2>
             
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               {error}
             </p>
             
@@ -240,7 +240,7 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
               </button>
             </div>
             
-            <p className="text-xs text-gray-500 mt-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-4">
               Don't worry! You can always re-run AI analysis from your account settings.
             </p>
           </div>
@@ -251,23 +251,23 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
 
   if (status === 'completed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-8">
           <div className="text-center">
-            <div className="bg-green-100/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center animate-bounce">
+            <div className="bg-green-100 dark:bg-green-900/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center animate-bounce">
               <CheckCircle size={32} className="text-green-600" />
             </div>
             
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
               All Set! 🎉
             </h2>
             
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
               Your personalized farm dashboard is ready with AI-powered recommendations!
             </p>
             
-            <div className="bg-green-50/20 border border-green-200 rounded-lg p-4">
-              <p className="text-green-700 text-sm">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <p className="text-green-700 dark:text-green-300 text-sm">
                 ✓ Field analysis complete<br />
                 ✓ Task schedule created<br />
                 ✓ Smart alerts configured<br />
@@ -281,18 +281,18 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+      <div className="max-w-2xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-8">
         <div className="text-center mb-8">
           <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
             <Brain size={32} className="text-white animate-pulse" />
           </div>
           
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
             Setting Up Your Farm
           </h1>
           
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             Our AI is analyzing your farm data and creating personalized recommendations...
           </p>
         </div>
@@ -300,15 +300,15 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Progress
             </span>
-            <span className="text-sm font-medium text-green-600">
+            <span className="text-sm font-medium text-green-600 dark:text-green-400">
               {Math.round(progress)}%
             </span>
           </div>
           
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
             <div 
               className="bg-gradient-to-r from-green-600 to-blue-600 h-full rounded-full transition-all duration-500 ease-out relative"
               style={{ width: `${progress}%` }}
@@ -331,10 +331,10 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
                 key={step.id}
                 className={`flex items-start space-x-4 p-4 rounded-lg border-2 transition-all duration-300 ${
                   isCompleted
-                    ? 'border-green-500 bg-green-50/20'
+                    ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
                     : isCurrent
-                    ? 'border-blue-500 bg-blue-50/20'
-                    : 'border-gray-200 bg-gray-50/50'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                    : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50'
                 }`}
               >
                 <div className={`flex-shrink-0 rounded-full p-2 ${
@@ -342,7 +342,7 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
                     ? 'bg-green-600 text-white'
                     : isCurrent
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-300 text-gray-600'
+                    : 'bg-gray-300 dark:bg-gray-600 text-gray-600 dark:text-gray-400'
                 }`}>
                   {isCompleted ? (
                     <CheckCircle size={20} />
@@ -356,15 +356,15 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
                 <div className="flex-1">
                   <h3 className={`font-semibold ${
                     isCompleted || isCurrent
-                      ? 'text-gray-900'
-                      : 'text-gray-500'
+                      ? 'text-gray-900 dark:text-white'
+                      : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {step.title}
                   </h3>
                   <p className={`text-sm ${
                     isCompleted || isCurrent
-                      ? 'text-gray-600'
-                      : 'text-gray-400'
+                      ? 'text-gray-600 dark:text-gray-300'
+                      : 'text-gray-400 dark:text-gray-500'
                   }`}>
                     {step.description}
                   </p>
@@ -379,14 +379,14 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-blue-50/20 border border-blue-200 rounded-lg p-4">
+        <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
           <div className="flex items-start space-x-3">
             <Sparkles size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-medium text-blue-900 mb-1">
+              <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-1">
                 What's Happening?
               </h4>
-              <p className="text-blue-700 text-sm">
+              <p className="text-blue-700 dark:text-blue-300 text-sm">
                 Our AI is analyzing your {onboardingData.fields?.length || 0} field(s), 
                 considering soil type, crop selection, location, and growth stage to create 
                 a personalized farming plan with actionable tasks and predictions.
@@ -397,7 +397,7 @@ const DashboardInitialization = ({ onComplete, onboardingData }) => {
 
         {/* Estimated Time */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             This usually takes 30-45 seconds • Please don't close this window
           </p>
         </div>
