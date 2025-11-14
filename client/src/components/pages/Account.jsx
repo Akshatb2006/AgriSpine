@@ -157,7 +157,7 @@ const Account = ({ onLogout }) => {
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-center py-12">
           <Loader2 size={32} className="text-green-600 animate-spin" />
-          <span className="ml-3 text-gray-600 dark:text-gray-400">Loading profile...</span>
+          <span className="ml-3 text-black dark:text-white opacity-70">Loading profile...</span>
         </div>
       </div>
     );
@@ -184,17 +184,17 @@ const Account = ({ onLogout }) => {
       )}
 
       {/* Profile Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center space-x-4">
             <div className="bg-green-600 text-white p-3 rounded-lg">
               <User size={28} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-2xl font-bold text-black dark:text-white">
                 {userProfile?.name || 'Farmer'}
               </h1>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-black dark:text-white opacity-70">
                 Farmer • Member since {userProfile?.createdAt ? new Date(userProfile.createdAt).getFullYear() : 2024}
               </p>
             </div>
@@ -322,7 +322,7 @@ const Account = ({ onLogout }) => {
                 placeholder="e.g., Wheat, Rice, Corn, Soybeans"
                 className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-xs text-black dark:text-white opacity-60 mt-1">
                 Separate multiple crops with commas
               </p>
             </div>
@@ -331,7 +331,7 @@ const Account = ({ onLogout }) => {
           <div className="space-y-6">
             {/* Contact Information */}
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+              <h3 className="font-semibold text-black dark:text-white mb-3 flex items-center">
                 <Phone size={18} className="mr-2 text-gray-500" />
                 Contact Information
               </h3>
@@ -339,8 +339,8 @@ const Account = ({ onLogout }) => {
                 <div className="flex items-center space-x-3">
                   <Mail size={16} className="text-gray-400" />
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p className="text-sm text-black dark:text-white opacity-60">Email</p>
+                    <p className="font-medium text-black dark:text-white">
                       {userProfile?.email || 'Not provided'}
                     </p>
                   </div>
@@ -348,8 +348,8 @@ const Account = ({ onLogout }) => {
                 <div className="flex items-center space-x-3">
                   <Phone size={16} className="text-gray-400" />
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Phone</p>
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p className="text-sm text-black dark:text-white opacity-60">Phone</p>
+                    <p className="font-medium text-black dark:text-white">
                       {userProfile?.phoneNumber || 'Not provided'}
                     </p>
                   </div>
@@ -359,26 +359,26 @@ const Account = ({ onLogout }) => {
 
             {/* Location Information */}
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+              <h3 className="font-semibold text-black dark:text-white mb-3 flex items-center">
                 <MapPin size={18} className="mr-2 text-gray-500" />
                 Location
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Village</p>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="text-sm text-black dark:text-white opacity-60">Village</p>
+                  <p className="font-medium text-black dark:text-white">
                     {userProfile?.location?.village || 'Not provided'}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">District</p>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="text-sm text-black dark:text-white opacity-60">District</p>
+                  <p className="font-medium text-black dark:text-white">
                     {userProfile?.location?.district || 'Not provided'}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">State</p>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="text-sm text-black dark:text-white opacity-60">State</p>
+                  <p className="font-medium text-black dark:text-white">
                     {userProfile?.location?.state || 'Not provided'}
                   </p>
                 </div>
@@ -387,7 +387,7 @@ const Account = ({ onLogout }) => {
 
             {/* Farm Information */}
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+              <h3 className="font-semibold text-black dark:text-white mb-3 flex items-center">
                 <Tractor size={18} className="mr-2 text-gray-500" />
                 Farming Details
               </h3>
@@ -395,8 +395,8 @@ const Account = ({ onLogout }) => {
                 <div className="flex items-center space-x-3">
                   <Calendar size={16} className="text-gray-400" />
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Experience</p>
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p className="text-sm text-black dark:text-white opacity-60">Experience</p>
+                    <p className="font-medium text-black dark:text-white">
                       {userProfile?.profile?.farmingExperience || 'Not provided'}
                     </p>
                   </div>
@@ -404,8 +404,8 @@ const Account = ({ onLogout }) => {
                 <div className="flex items-center space-x-3">
                   <Wheat size={16} className="text-gray-400" />
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Primary Crops</p>
-                    <p className="font-medium text-gray-900 dark:text-white">
+                    <p className="text-sm text-black dark:text-white opacity-60">Primary Crops</p>
+                    <p className="font-medium text-black dark:text-white">
                       {userProfile?.profile?.primaryCrops?.length > 0 
                         ? userProfile.profile.primaryCrops.join(', ')
                         : 'Not provided'
@@ -419,8 +419,8 @@ const Account = ({ onLogout }) => {
         )}
 
         {/* Farm Statistics */}
-        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Farm Overview</h3>
+        <div className="mt-6 pt-6 border-t border-black dark:border-white">
+          <h3 className="font-semibold text-black dark:text-white mb-4">Farm Overview</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
               <div className="flex items-center space-x-3">
@@ -453,8 +453,8 @@ const Account = ({ onLogout }) => {
       </div>
 
       {/* Account Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Account Settings</h2>
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+        <h2 className="text-lg font-semibold text-black dark:text-white mb-4">Account Settings</h2>
         
         <div className="space-y-2">
           {accountItems.map((item, index) => {
@@ -467,8 +467,8 @@ const Account = ({ onLogout }) => {
               >
                 <Icon size={20} className="text-gray-400" />
                 <div className="flex-1">
-                  <h3 className="font-medium text-gray-900 dark:text-white">{item.label}</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{item.description}</p>
+                  <h3 className="font-medium text-black dark:text-white">{item.label}</h3>
+                  <p className="text-sm text-black dark:text-white opacity-60">{item.description}</p>
                 </div>
               </button>
             );
@@ -477,8 +477,8 @@ const Account = ({ onLogout }) => {
       </div>
 
       {/* Account Actions */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Account Actions</h2>
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+        <h2 className="text-lg font-semibold text-black dark:text-white mb-4">Account Actions</h2>
         
         <button
           onClick={onLogout}

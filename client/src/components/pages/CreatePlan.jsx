@@ -342,10 +342,10 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
           <div className="bg-gray-100 dark:bg-gray-800 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
             <Calendar size={32} className="text-gray-400" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-2">
             No Fields Available
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-black dark:text-white opacity-70 mb-6">
             You need to add fields before creating farming plans.
           </p>
           <button
@@ -364,17 +364,17 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
       {/* Loading Overlay */}
       {loading && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md mx-4 text-center">
+          <div className="bg-white dark:bg-black rounded-lg p-8 max-w-md mx-4 text-center">
             <div className="bg-green-100 dark:bg-green-900/20 rounded-full p-6 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
               <div className="relative">
                 <Loader2 size={32} className="text-green-600 animate-spin" />
                 <Brain size={16} className="text-green-700 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
               </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-xl font-bold text-black dark:text-white mb-2">
               Creating Your Plan
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-black dark:text-white opacity-70 mb-4">
               {loadingStep}
             </p>
             
@@ -436,24 +436,24 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
       <div className="mb-6">
         <button
           onClick={() => navigate('/plans')}
-          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors mb-4"
+          className="flex items-center space-x-2 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 transition-colors mb-4"
         >
           <ArrowLeft size={16} />
           <span>Back to Plans</span>
         </button>
         
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h1 className="text-2xl font-bold text-black dark:text-white mb-2">
           Create New Farming Plan
         </h1>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-black dark:text-white opacity-70">
           Generate an AI-powered farming plan tailored to your field and goals
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Field Selection */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h2 className="text-lg font-semibold text-black dark:text-white mb-4">
             Select Field
           </h2>
           <FieldSelector />
@@ -473,8 +473,8 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
         </div>
 
         {/* Plan Type Selection */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h2 className="text-lg font-semibold text-black dark:text-white mb-4">
             Choose Plan Type
           </h2>
           
@@ -487,16 +487,16 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                 className={`p-4 text-left border-2 rounded-lg transition-colors ${
                   formData.planType === type.id
                     ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600'
+                    : 'border-black dark:border-white hover:border-green-300 dark:hover:border-green-600'
                 }`}
               >
                 <div className="flex items-center space-x-3 mb-2">
                   <span className="text-2xl">{type.icon}</span>
-                  <h3 className="font-medium text-gray-900 dark:text-white">
+                  <h3 className="font-medium text-black dark:text-white">
                     {type.name}
                   </h3>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-sm text-black dark:text-white opacity-70 mb-2">
                   {type.description}
                 </p>
                 <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
@@ -513,8 +513,8 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
         </div>
 
         {/* Plan Details */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h2 className="text-lg font-semibold text-black dark:text-white mb-4">
             Plan Details
           </h2>
           
@@ -529,7 +529,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                 value={formData.title}
                 onChange={(e) => handleInputChange('title', e.target.value)}
                 placeholder="e.g., Spring Wheat Planting Plan 2024"
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
               {errors.title && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.title}</p>
@@ -546,7 +546,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                 value={formData.startDate}
                 onChange={(e) => handleInputChange('startDate', e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
               {errors.startDate && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.startDate}</p>
@@ -561,7 +561,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
               <select
                 value={formData.duration}
                 onChange={(e) => handleInputChange('duration', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 <option value="15">15 days</option>
                 <option value="30">30 days</option>
@@ -586,7 +586,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                     className={`flex items-center space-x-2 px-4 py-2 border-2 rounded-lg transition-colors ${
                       formData.priority === priority
                         ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
-                        : 'border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600'
+                        : 'border-black dark:border-white hover:border-green-300 dark:hover:border-green-600'
                     }`}
                   >
                     <div className={`w-3 h-3 rounded-full ${
@@ -602,11 +602,11 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
         </div>
 
         {/* Objectives */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h2 className="text-lg font-semibold text-black dark:text-white mb-4">
             Plan Objectives *
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+          <p className="text-black dark:text-white opacity-70 text-sm mb-4">
             Select the main goals you want to achieve with this plan
           </p>
           
@@ -619,7 +619,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                 className={`flex items-center space-x-3 p-3 text-left border-2 rounded-lg transition-colors ${
                   formData.objectives.includes(objective)
                     ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600'
+                    : 'border-black dark:border-white hover:border-green-300 dark:hover:border-green-600'
                 }`}
               >
                 <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
@@ -631,7 +631,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
                     <CheckCircle size={12} className="text-white" />
                   )}
                 </div>
-                <span className="font-medium text-gray-900 dark:text-white">
+                <span className="font-medium text-black dark:text-white">
                   {objective}
                 </span>
               </button>
@@ -645,7 +645,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
               value={formData.customObjective}
               onChange={(e) => handleInputChange('customObjective', e.target.value)}
               placeholder="Add custom objective..."
-              className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -665,7 +665,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
           {/* Selected Objectives */}
           {formData.objectives.length > 0 && (
             <div className="mt-4">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
+              <h4 className="text-sm font-medium text-black dark:text-white mb-2">
                 Selected Objectives:
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -694,8 +694,8 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
         </div>
 
         {/* Additional Notes */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h2 className="text-lg font-semibold text-black dark:text-white mb-4">
             Additional Notes
           </h2>
           <textarea
@@ -703,7 +703,7 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
             onChange={(e) => handleInputChange('notes', e.target.value)}
             rows={4}
             placeholder="Any specific requirements, constraints, or additional information..."
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-black text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
           />
         </div>
 
@@ -718,11 +718,11 @@ const pollForPlanCompletion = async (planId, maxAttempts = 60) => { // Increased
         )}
 
         {/* Submit Buttons */}
-        <div className="flex justify-between items-center pt-6 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center pt-6 border-t border-black dark:border-white">
           <button
             type="button"
             onClick={() => navigate('/plans')}
-            className="px-6 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 font-medium transition-colors"
+            className="px-6 py-2 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 font-medium transition-colors"
           >
             Cancel
           </button>

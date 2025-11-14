@@ -142,7 +142,7 @@ const PlanDetails = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <Loader2 size={32} className="text-green-600 animate-spin mx-auto mb-4" />
-          <p className="text-gray-600 dark:text-gray-400">Loading plan details...</p>
+          <p className="text-black dark:text-white opacity-70">Loading plan details...</p>
         </div>
       </div>
     );
@@ -153,7 +153,7 @@ const PlanDetails = () => {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
           <AlertCircle size={48} className="text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-xl font-bold text-black dark:text-white mb-2">
             {error}
           </h2>
           <button
@@ -171,7 +171,7 @@ const PlanDetails = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-xl font-bold text-black dark:text-white mb-2">
             Plan not found
           </h2>
           <button
@@ -192,11 +192,11 @@ const PlanDetails = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
         <div className="flex items-center justify-between mb-4">
           <button
             onClick={() => navigate('/plans')}
-            className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+            className="flex items-center space-x-2 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
           >
             <ArrowLeft size={16} />
             <span>Back to Plans</span>
@@ -218,7 +218,7 @@ const PlanDetails = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="mb-4 lg:mb-0">
             <div className="flex items-center space-x-3 mb-2">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-2xl font-bold text-black dark:text-white">
                 {plan.title}
               </h1>
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(plan.status)}`}>
@@ -228,7 +228,7 @@ const PlanDetails = () => {
                 {plan.priority.charAt(0).toUpperCase() + plan.priority.slice(1)} Priority
               </span>
             </div>
-            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center space-x-4 text-sm text-black dark:text-white opacity-60">
               <div className="flex items-center space-x-1">
                 <Calendar size={14} />
                 <span>{new Date(plan.startDate).toLocaleDateString()} - {new Date(plan.endDate).toLocaleDateString()}</span>
@@ -271,12 +271,12 @@ const PlanDetails = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-lg font-bold text-gray-900 dark:text-white">
+                  <span className="text-lg font-bold text-black dark:text-white">
                     {progressPercentage}%
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Complete</p>
+              <p className="text-sm text-black dark:text-white opacity-60 mt-1">Complete</p>
             </div>
           </div>
         </div>
@@ -284,56 +284,56 @@ const PlanDetails = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center">
             <div className="bg-blue-100 dark:bg-blue-900/20 rounded-lg p-3">
               <CheckCircle className="w-6 h-6 text-blue-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Tasks</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm font-medium text-black dark:text-white opacity-70">Tasks</p>
+              <p className="text-2xl font-bold text-black dark:text-white">
                 {completedTasks}/{totalTasks}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center">
             <div className="bg-red-100 dark:bg-red-900/20 rounded-lg p-3">
               <AlertCircle className="w-6 h-6 text-red-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Overdue</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm font-medium text-black dark:text-white opacity-70">Overdue</p>
+              <p className="text-2xl font-bold text-black dark:text-white">
                 {plan.overdueTasks?.length || 0}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center">
             <div className="bg-yellow-100 dark:bg-yellow-900/20 rounded-lg p-3">
               <Clock className="w-6 h-6 text-yellow-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Upcoming</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm font-medium text-black dark:text-white opacity-70">Upcoming</p>
+              <p className="text-2xl font-bold text-black dark:text-white">
                 {plan.upcomingTasks?.length || 0}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center">
             <div className="bg-green-100 dark:bg-green-900/20 rounded-lg p-3">
               <TrendingUp className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Progress</p>
-              <p className="text-2xl font-bold text-gray-900 dark:text-white">{progressPercentage}%</p>
+              <p className="text-sm font-medium text-black dark:text-white opacity-70">Progress</p>
+              <p className="text-2xl font-bold text-black dark:text-white">{progressPercentage}%</p>
             </div>
           </div>
         </div>
@@ -342,10 +342,10 @@ const PlanDetails = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Tasks List */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white">
+            <div className="p-6 border-b border-black dark:border-white">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <h2 className="text-lg font-semibold text-black dark:text-white">
                   Tasks ({plan.tasks.length})
                 </h2>
                 <button className="flex items-center space-x-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300">
@@ -390,7 +390,7 @@ const PlanDetails = () => {
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
                         <span className="text-xl">{getTaskIcon(task.type)}</span>
-                        <h3 className={`font-medium ${task.status === 'completed' ? 'line-through text-gray-500' : 'text-gray-900 dark:text-white'}`}>
+                        <h3 className={`font-medium ${task.status === 'completed' ? 'line-through text-gray-500' : 'text-black dark:text-white'}`}>
                           {task.title}
                         </h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}>
@@ -409,12 +409,12 @@ const PlanDetails = () => {
                       </div>
 
                       {task.description && (
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
+                        <p className="text-black dark:text-white opacity-70 text-sm mb-2">
                           {task.description}
                         </p>
                       )}
 
-                      <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                      <div className="flex items-center space-x-4 text-sm text-black dark:text-white opacity-60 mb-2">
                         <div className="flex items-center space-x-1">
                           <Calendar size={14} />
                           <span>{new Date(task.scheduledDate).toLocaleDateString()}</span>
@@ -465,7 +465,7 @@ const PlanDetails = () => {
                       <div className="flex items-center space-x-3">
                         <button
                           onClick={() => toggleTaskNotes(task.id)}
-                          className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 text-sm"
+                          className="text-black dark:text-white opacity-60 hover:text-gray-700 dark:hover:text-gray-300 text-sm"
                         >
                           {showTaskNotes[task.id] ? 'Hide Notes' : 'Add Notes'}
                         </button>
@@ -501,7 +501,7 @@ const PlanDetails = () => {
                           <div className="flex justify-end space-x-2 mt-2">
                             <button
                               onClick={() => toggleTaskNotes(task.id)}
-                              className="px-3 py-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 text-sm"
+                              className="px-3 py-1 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 text-sm"
                             >
                               Cancel
                             </button>
@@ -522,27 +522,27 @@ const PlanDetails = () => {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Plan Info */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Plan Information</h3>
+          <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Plan Information</h3>
             
             <div className="space-y-3">
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Field</p>
-                <p className="font-medium text-gray-900 dark:text-white">{plan.field?.name}</p>
+                <p className="text-sm text-black dark:text-white opacity-60">Field</p>
+                <p className="font-medium text-black dark:text-white">{plan.field?.name}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Plan Type</p>
-                <p className="font-medium text-gray-900 dark:text-white capitalize">
+                <p className="text-sm text-black dark:text-white opacity-60">Plan Type</p>
+                <p className="font-medium text-black dark:text-white capitalize">
                   {plan.planType.replace('_', ' ')}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Duration</p>
-                <p className="font-medium text-gray-900 dark:text-white">{plan.duration} days</p>
+                <p className="text-sm text-black dark:text-white opacity-60">Duration</p>
+                <p className="font-medium text-black dark:text-white">{plan.duration} days</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
-                <p className="font-medium text-gray-900 dark:text-white">
+                <p className="text-sm text-black dark:text-white opacity-60">Created</p>
+                <p className="font-medium text-black dark:text-white">
                   {new Date(plan.createdAt).toLocaleDateString()}
                 </p>
               </div>
@@ -551,8 +551,8 @@ const PlanDetails = () => {
 
           {/* Objectives */}
           {plan.objectives && plan.objectives.length > 0 && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Objectives</h3>
+            <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+              <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Objectives</h3>
               <ul className="space-y-2">
                 {plan.objectives.map((objective, index) => (
                   <li key={index} className="flex items-start space-x-2">
@@ -566,8 +566,8 @@ const PlanDetails = () => {
 
           {/* AI Recommendations */}
           {plan.aiRecommendations && plan.aiRecommendations.length > 0 && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">AI Recommendations</h3>
+            <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+              <h3 className="text-lg font-semibold text-black dark:text-white mb-4">AI Recommendations</h3>
               <div className="space-y-3">
                 {plan.aiRecommendations.map((rec, index) => (
                   <div key={index} className="border border-blue-200 dark:border-blue-800 rounded-lg p-3">
@@ -605,23 +605,23 @@ const PlanDetails = () => {
 
           {/* Resource Requirements */}
           {plan.resourceRequirements && plan.resourceRequirements.length > 0 && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Resource Requirements</h3>
+            <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+              <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Resource Requirements</h3>
               <div className="space-y-3">
                 {plan.resourceRequirements.map((resource, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{resource.name}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="font-medium text-black dark:text-white">{resource.name}</p>
+                      <p className="text-sm text-black dark:text-white opacity-60">
                         {resource.totalQuantity} {resource.unit}
                       </p>
                     </div>
                     {resource.estimatedCost && (
                       <div className="text-right">
-                        <p className="font-medium text-gray-900 dark:text-white">
+                        <p className="font-medium text-black dark:text-white">
                           ₹{resource.estimatedCost.toLocaleString()}
                         </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{resource.timing}</p>
+                        <p className="text-xs text-black dark:text-white opacity-60">{resource.timing}</p>
                       </div>
                     )}
                   </div>

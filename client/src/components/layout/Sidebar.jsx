@@ -46,7 +46,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         />
 
         <div
-          className={`relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-800 transform transition ease-in-out duration-300 ${
+          className={`relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-black border-r border-black dark:border-white transform transition ease-in-out duration-300 ${
             sidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
@@ -62,16 +62,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center px-4 mb-8">
+            <div className="flex-shrink-0 flex items-center px-4 mb-8 dark:justify-center">
               <div className="flex items-center space-x-3">
-                <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-2 rounded-xl">
+                <div className="bg-black dark:bg-white text-white dark:text-black p-2 rounded-xl">
                   <Sprout size={24} />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h1 className="text-xl font-bold text-black dark:text-white">
                     FARMER'S DESK
                   </h1>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-black dark:text-white opacity-70">
                     Smart Agriculture
                   </p>
                 </div>
@@ -90,8 +90,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     className={({ isActive }) =>
                       `group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                         isActive
-                          ? 'bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 text-green-700 dark:text-green-300 border-l-4 border-green-600'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
+                          ? 'bg-black dark:bg-white text-white dark:text-black border-l-4 border-black dark:border-white'
+                          : 'text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900'
                       }`
                     }
                   >
@@ -122,12 +122,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       key={action.name}
                       to={action.href}
                       onClick={() => setSidebarOpen(false)}
-                      className="group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                      className="group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-900"
                     >
-                      <div className={`p-1.5 rounded-lg mr-3 ${action.bg}`}>
-                        <Icon className={`h-4 w-4 ${action.color}`} />
+                      <div className="p-1.5 rounded-lg mr-3 bg-black dark:bg-white">
+                        <Icon className="h-4 w-4 text-white dark:text-black" />
                       </div>
-                      <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
+                      <span className="text-black dark:text-white">
                         {action.name}
                       </span>
                     </NavLink>
@@ -137,12 +137,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </div>
 
             {/* AI Status Indicator */}
-            <div className="mt-8 mx-2 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl border border-purple-200 dark:border-purple-800">
+            <div className="mt-8 mx-2 p-4 bg-black dark:bg-white rounded-xl border border-black dark:border-white">
               <div className="flex items-center space-x-2 mb-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-900 dark:text-white">AI Status</span>
+                <div className="w-2 h-2 bg-white dark:bg-black rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-white dark:text-black">AI Status</span>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400">
+              <p className="text-xs text-white dark:text-black opacity-70">
                 All systems operational
               </p>
             </div>
@@ -153,19 +153,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* Desktop sidebar */}
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          <div className="flex flex-col h-0 flex-1 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+          <div className="flex flex-col h-0 flex-1 border-r border-black dark:border-white bg-white dark:bg-black">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-              {/* Logo */}
-              <div className="flex items-center flex-shrink-0 px-4 mb-8">
+              {/* Logo - Light mode: Left, Dark mode: Centered */}
+              <div className="flex items-center flex-shrink-0 px-4 mb-8 dark:justify-center">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-2 rounded-xl">
+                  <div className="bg-black dark:bg-white text-white dark:text-black p-2 rounded-xl">
                     <Sprout size={24} />
                   </div>
                   <div>
-                    <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h1 className="text-xl font-bold text-black dark:text-white">
                       FARMER'S DESK
                     </h1>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-black dark:text-white opacity-70">
                       Smart Agriculture
                     </p>
                   </div>
@@ -183,8 +183,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       className={({ isActive }) =>
                         `group flex items-center px-3 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                           isActive
-                            ? 'bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 text-green-700 dark:text-green-300 border-l-4 border-green-600'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
+                            ? 'bg-black dark:bg-white text-white dark:text-black border-l-4 border-black dark:border-white'
+                            : 'text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900'
                         }`
                       }
                     >
@@ -211,30 +211,30 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   {quickActions.map((action) => {
                     const Icon = action.icon;
                     return (
-                      <NavLink
-                        key={action.name}
-                        to={action.href}
-                        className="group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700"
-                      >
-                        <div className={`p-1.5 rounded-lg mr-3 ${action.bg}`}>
-                          <Icon className={`h-4 w-4 ${action.color}`} />
-                        </div>
-                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
-                          {action.name}
-                        </span>
-                      </NavLink>
+                    <NavLink
+                      key={action.name}
+                      to={action.href}
+                      className="group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-900"
+                    >
+                      <div className="p-1.5 rounded-lg mr-3 bg-black dark:bg-white">
+                        <Icon className="h-4 w-4 text-white dark:text-black" />
+                      </div>
+                      <span className="text-black dark:text-white">
+                        {action.name}
+                      </span>
+                    </NavLink>
                     );
                   })}
                 </div>
               </div>
 
               {/* AI Status Indicator */}
-              <div className="mt-8 mx-2 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl border border-purple-200 dark:border-purple-800">
+              <div className="mt-8 mx-2 p-4 bg-black dark:bg-white rounded-xl border border-black dark:border-white">
                 <div className="flex items-center space-x-2 mb-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">AI Status</span>
+                  <div className="w-2 h-2 bg-white dark:bg-black rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-white dark:text-black">AI Status</span>
                 </div>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
+                <p className="text-xs text-white dark:text-black opacity-70">
                   All systems operational
                 </p>
               </div>

@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-50 dark:bg-gray-900">
+    <div className="h-screen flex overflow-hidden bg-white dark:bg-black">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       
@@ -14,11 +14,14 @@ const Layout = ({ children }) => {
       <div className="flex flex-col w-0 flex-1 overflow-hidden">
         <Header setSidebarOpen={setSidebarOpen} />
         
-        {/* Page content */}
+        {/* Page content - Different layouts for light/dark */}
         <main className="flex-1 relative overflow-y-auto focus:outline-none">
-          <div className="py-6">
-            <div className="max-w-none mx-auto px-4 sm:px-6 md:px-8">
-              {children}
+          {/* Light mode: Centered, compact layout */}
+          <div className="py-8 dark:py-4">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 dark:max-w-full dark:px-4 dark:sm:px-6">
+              <div className="space-y-6 dark:space-y-4">
+                {children}
+              </div>
             </div>
           </div>
         </main>

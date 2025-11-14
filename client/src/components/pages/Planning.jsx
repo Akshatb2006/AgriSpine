@@ -11,10 +11,10 @@ const Planning = () => {
             <Brain size={24} className="text-gray-400" />
           </div>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        <h2 className="text-2xl font-bold text-black dark:text-white mb-2">
           AI Planning Assistant
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
+        <p className="text-black dark:text-white opacity-70 mb-6">
           Smart farming recommendations and task scheduling powered by AI. This section will help you optimize your farming operations.
         </p>
         <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 text-left max-w-md">

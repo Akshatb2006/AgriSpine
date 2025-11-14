@@ -79,10 +79,10 @@ const PredictionResults = () => {
           <div className="bg-green-100 dark:bg-green-900/20 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
             <Loader2 size={32} className="text-green-600 animate-spin" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-2">
             Analyzing Your Data
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-black dark:text-white opacity-70 mb-4">
             Our AI is processing your farm data and generating predictions...
           </p>
           <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 max-w-md mx-auto">
@@ -108,10 +108,10 @@ const PredictionResults = () => {
           <div className="bg-red-100 dark:bg-red-900/20 rounded-full p-6 w-24 h-24 mx-auto mb-4 flex items-center justify-center">
             <AlertTriangle size={32} className="text-red-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-2">
             Analysis Failed
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-black dark:text-white opacity-70 mb-6">
             {error || prediction?.error || 'Unable to complete the prediction analysis'}
           </p>
           <div className="space-x-4">
@@ -137,10 +137,10 @@ const PredictionResults = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h2 className="text-2xl font-bold text-black dark:text-white mb-2">
             Prediction Not Found
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-black dark:text-white opacity-70 mb-6">
             The requested prediction could not be found.
           </p>
           <button
@@ -225,8 +225,8 @@ const PredictionResults = () => {
       {/* Key Insights */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Positive Factors */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4 flex items-center">
             <CheckCircle className="text-green-600 mr-2" size={20} />
             Positive Factors
           </h3>
@@ -241,8 +241,8 @@ const PredictionResults = () => {
         </div>
 
         {/* Challenges */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4 flex items-center">
             <AlertTriangle className="text-orange-600 mr-2" size={20} />
             Challenges to Address
           </h3>
@@ -271,18 +271,18 @@ const PredictionResults = () => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">AI Recommendations</h2>
-        <p className="text-gray-600 dark:text-gray-400">Actionable insights to optimize your yield</p>
+        <h2 className="text-2xl font-bold text-black dark:text-white">AI Recommendations</h2>
+        <p className="text-black dark:text-white opacity-70">Actionable insights to optimize your yield</p>
       </div>
 
       <div className="grid gap-4">
         {predictionData.recommendations?.map((rec, index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div key={index} className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">{rec.icon || '📋'}</span>
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white capitalize">
+                  <h3 className="font-semibold text-black dark:text-white capitalize">
                     {rec.category?.replace('_', ' ') || 'General'}
                   </h3>
                   <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(rec.priority)}`}>
@@ -291,7 +291,7 @@ const PredictionResults = () => {
                 </div>
               </div>
               <div className="text-right">
-                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center text-sm text-black dark:text-white opacity-60">
                   <Clock size={14} className="mr-1" />
                   {rec.timing || 'As needed'}
                 </div>
@@ -301,37 +301,37 @@ const PredictionResults = () => {
             <p className="text-gray-700 dark:text-gray-300 mb-3">{rec.action}</p>
             
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-black dark:text-white opacity-70">
                 <strong>Expected Impact:</strong> {rec.expectedImpact}
               </p>
             </div>
           </div>
         )) || (
           <div className="text-center py-8">
-            <p className="text-gray-500 dark:text-gray-400">No specific recommendations available</p>
+            <p className="text-black dark:text-white opacity-60">No specific recommendations available</p>
           </div>
         )}
       </div>
 
       {/* Seasonal Advice */}
       {predictionData.seasonalAdvice && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4 flex items-center">
             <Calendar className="text-purple-600 mr-2" size={20} />
             Seasonal Advice
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Current Stage</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <h4 className="font-medium text-black dark:text-white mb-2">Current Stage</h4>
+              <p className="text-black dark:text-white opacity-70 text-sm">
                 {predictionData.seasonalAdvice.currentStage}
               </p>
             </div>
             
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Next Steps</h4>
-              <ul className="text-gray-600 dark:text-gray-400 text-sm space-y-1">
+              <h4 className="font-medium text-black dark:text-white mb-2">Next Steps</h4>
+              <ul className="text-black dark:text-white opacity-70 text-sm space-y-1">
                 {predictionData.seasonalAdvice.nextSteps?.map((step, index) => (
                   <li key={index}>• {step}</li>
                 ))}
@@ -339,8 +339,8 @@ const PredictionResults = () => {
             </div>
             
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Critical Periods</h4>
-              <ul className="text-gray-600 dark:text-gray-400 text-sm space-y-1">
+              <h4 className="font-medium text-black dark:text-white mb-2">Critical Periods</h4>
+              <ul className="text-black dark:text-white opacity-70 text-sm space-y-1">
                 {predictionData.seasonalAdvice.criticalPeriods?.map((period, index) => (
                   <li key={index}>• {period}</li>
                 ))}
@@ -356,14 +356,14 @@ const PredictionResults = () => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <AlertTriangle className="w-12 h-12 text-orange-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Risk Assessment</h2>
-        <p className="text-gray-600 dark:text-gray-400">Potential risks and mitigation strategies</p>
+        <h2 className="text-2xl font-bold text-black dark:text-white">Risk Assessment</h2>
+        <p className="text-black dark:text-white opacity-70">Potential risks and mitigation strategies</p>
       </div>
 
       {/* Overall Risk */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Overall Risk Level</h3>
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-2">Overall Risk Level</h3>
           <span className={`inline-block px-4 py-2 rounded-full text-lg font-medium ${getRiskColor(predictionData.riskAssessment?.overallRisk)}`}>
             {predictionData.riskAssessment?.overallRisk?.toUpperCase() || 'MEDIUM'} RISK
           </span>
@@ -375,9 +375,9 @@ const PredictionResults = () => {
         {predictionData.riskAssessment && Object.entries(predictionData.riskAssessment)
           .filter(([key]) => key !== 'overallRisk')
           .map(([key, value]) => (
-            <div key={key} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4">
+            <div key={key} className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-4">
               <div className="flex items-center justify-between">
-                <h4 className="font-medium text-gray-900 dark:text-white capitalize">
+                <h4 className="font-medium text-black dark:text-white capitalize">
                   {key.replace('Risk', ' Risk')}
                 </h4>
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${getRiskColor(value)}`}>
@@ -390,28 +390,28 @@ const PredictionResults = () => {
 
       {/* Sustainability Assessment */}
       {predictionData.sustainability && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4 flex items-center">
             <CheckCircle className="text-green-600 mr-2" size={20} />
             Sustainability Assessment
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Water Efficiency</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              <h4 className="font-medium text-black dark:text-white mb-2">Water Efficiency</h4>
+              <p className="text-black dark:text-white opacity-70 text-sm mb-4">
                 {predictionData.sustainability.waterEfficiency}
               </p>
               
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Soil Health</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <h4 className="font-medium text-black dark:text-white mb-2">Soil Health</h4>
+              <p className="text-black dark:text-white opacity-70 text-sm">
                 {predictionData.sustainability.soilHealth}
               </p>
             </div>
             
             <div>
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Sustainability Suggestions</h4>
-              <ul className="text-gray-600 dark:text-gray-400 text-sm space-y-1">
+              <h4 className="font-medium text-black dark:text-white mb-2">Sustainability Suggestions</h4>
+              <ul className="text-black dark:text-white opacity-70 text-sm space-y-1">
                 {predictionData.sustainability.suggestions?.map((suggestion, index) => (
                   <li key={index}>• {suggestion}</li>
                 ))}
@@ -427,53 +427,53 @@ const PredictionResults = () => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <Cloud className="w-12 h-12 text-blue-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Weather Analysis</h2>
-        <p className="text-gray-600 dark:text-gray-400">Current conditions and 7-day forecast</p>
+        <h2 className="text-2xl font-bold text-black dark:text-white">Weather Analysis</h2>
+        <p className="text-black dark:text-white opacity-70">Current conditions and 7-day forecast</p>
       </div>
 
       {prediction.weatherData ? (
         <>
           {/* Current Weather */}
           {prediction.weatherData.current && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Current Conditions</h3>
+            <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+              <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Current Conditions</h3>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center">
                   <Thermometer className="w-8 h-8 text-red-500 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <p className="text-2xl font-bold text-black dark:text-white">
                     {Math.round(prediction.weatherData.current.temperature)}°C
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Temperature</p>
+                  <p className="text-sm text-black dark:text-white opacity-60">Temperature</p>
                 </div>
                 
                 <div className="text-center">
                   <Droplets className="w-8 h-8 text-blue-500 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <p className="text-2xl font-bold text-black dark:text-white">
                     {prediction.weatherData.current.humidity}%
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Humidity</p>
+                  <p className="text-sm text-black dark:text-white opacity-60">Humidity</p>
                 </div>
                 
                 <div className="text-center">
                   <Wind className="w-8 h-8 text-gray-500 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <p className="text-2xl font-bold text-black dark:text-white">
                     {prediction.weatherData.current.windSpeed} m/s
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Wind Speed</p>
+                  <p className="text-sm text-black dark:text-white opacity-60">Wind Speed</p>
                 </div>
                 
                 <div className="text-center">
                   <Cloud className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <p className="text-2xl font-bold text-black dark:text-white">
                     {prediction.weatherData.current.rainfall || 0}mm
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Rainfall</p>
+                  <p className="text-sm text-black dark:text-white opacity-60">Rainfall</p>
                 </div>
               </div>
               
               <div className="mt-4 text-center">
-                <p className="text-gray-600 dark:text-gray-400 capitalize">
+                <p className="text-black dark:text-white opacity-70 capitalize">
                   {prediction.weatherData.current.description}
                 </p>
               </div>
@@ -482,23 +482,23 @@ const PredictionResults = () => {
 
           {/* 7-Day Forecast */}
           {prediction.weatherData.forecast && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">7-Day Forecast</h3>
+            <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+              <h3 className="text-lg font-semibold text-black dark:text-white mb-4">7-Day Forecast</h3>
               
               <div className="grid grid-cols-1 gap-3">
                 {prediction.weatherData.forecast.map((day, index) => (
                   <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                     <div className="flex items-center space-x-3">
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">
+                      <div className="text-sm font-medium text-black dark:text-white">
                         {new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 capitalize">
+                      <div className="text-sm text-black dark:text-white opacity-70 capitalize">
                         {day.description}
                       </div>
                     </div>
                     
                     <div className="flex items-center space-x-4">
-                      <div className="text-sm text-gray-900 dark:text-white">
+                      <div className="text-sm text-black dark:text-white">
                         {Math.round(day.temperature.max)}°/{Math.round(day.temperature.min)}°
                       </div>
                       <div className="text-sm text-blue-600 dark:text-blue-400">
@@ -516,7 +516,7 @@ const PredictionResults = () => {
         </>
       ) : (
         <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-8 text-center">
-          <p className="text-gray-500 dark:text-gray-400">Weather data not available</p>
+          <p className="text-black dark:text-white opacity-60">Weather data not available</p>
         </div>
       )}
     </div>
@@ -526,54 +526,54 @@ const PredictionResults = () => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <BarChart3 className="w-12 h-12 text-purple-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Prediction Details</h2>
-        <p className="text-gray-600 dark:text-gray-400">Input data and analysis metadata</p>
+        <h2 className="text-2xl font-bold text-black dark:text-white">Prediction Details</h2>
+        <p className="text-black dark:text-white opacity-70">Input data and analysis metadata</p>
       </div>
 
       {/* Input Summary */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Input Data Summary</h3>
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+        <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Input Data Summary</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Crop Type:</span>
-              <span className="font-medium text-gray-900 dark:text-white capitalize">{inputData?.cropType}</span>
+              <span className="text-black dark:text-white opacity-70">Crop Type:</span>
+              <span className="font-medium text-black dark:text-white capitalize">{inputData?.cropType}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Field Size:</span>
-              <span className="font-medium text-gray-900 dark:text-white">{inputData?.fieldSize} acres</span>
+              <span className="text-black dark:text-white opacity-70">Field Size:</span>
+              <span className="font-medium text-black dark:text-white">{inputData?.fieldSize} acres</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Location:</span>
-              <span className="font-medium text-gray-900 dark:text-white">{inputData?.location}</span>
+              <span className="text-black dark:text-white opacity-70">Location:</span>
+              <span className="font-medium text-black dark:text-white">{inputData?.location}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Soil Type:</span>
-              <span className="font-medium text-gray-900 dark:text-white capitalize">{inputData?.soilType}</span>
+              <span className="text-black dark:text-white opacity-70">Soil Type:</span>
+              <span className="font-medium text-black dark:text-white capitalize">{inputData?.soilType}</span>
             </div>
           </div>
           
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Irrigation:</span>
-              <span className="font-medium text-gray-900 dark:text-white capitalize">{inputData?.irrigationType}</span>
+              <span className="text-black dark:text-white opacity-70">Irrigation:</span>
+              <span className="font-medium text-black dark:text-white capitalize">{inputData?.irrigationType}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Planting Date:</span>
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="text-black dark:text-white opacity-70">Planting Date:</span>
+              <span className="font-medium text-black dark:text-white">
                 {inputData?.plantingDate ? new Date(inputData.plantingDate).toLocaleDateString() : 'Not specified'}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Previous Yield:</span>
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="text-black dark:text-white opacity-70">Previous Yield:</span>
+              <span className="font-medium text-black dark:text-white">
                 {inputData?.previousYield ? `${inputData.previousYield} tons/acre` : 'Not specified'}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Fertilizer:</span>
-              <span className="font-medium text-gray-900 dark:text-white capitalize">
+              <span className="text-black dark:text-white opacity-70">Fertilizer:</span>
+              <span className="font-medium text-black dark:text-white capitalize">
                 {inputData?.fertilizer || 'Not specified'}
               </span>
             </div>
@@ -582,20 +582,20 @@ const PredictionResults = () => {
       </div>
 
       {/* Analysis Metadata */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Analysis Information</h3>
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+        <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Analysis Information</h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Generated:</span>
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="text-black dark:text-white opacity-70">Generated:</span>
+              <span className="font-medium text-black dark:text-white">
                 {new Date(prediction.createdAt).toLocaleString()}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Processing Time:</span>
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="text-black dark:text-white opacity-70">Processing Time:</span>
+              <span className="font-medium text-black dark:text-white">
                 {prediction.processingTime ? `${Math.round(prediction.processingTime / 1000)}s` : 'N/A'}
               </span>
             </div>
@@ -603,14 +603,14 @@ const PredictionResults = () => {
           
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">AI Model:</span>
-              <span className="font-medium text-gray-900 dark:text-white">
+              <span className="text-black dark:text-white opacity-70">AI Model:</span>
+              <span className="font-medium text-black dark:text-white">
                 {predictionData.aiGenerated ? 'Gemini AI' : 'Statistical Model'}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">Prediction ID:</span>
-              <span className="font-medium text-gray-900 dark:text-white font-mono text-sm">{predictionId}</span>
+              <span className="text-black dark:text-white opacity-70">Prediction ID:</span>
+              <span className="font-medium text-black dark:text-white font-mono text-sm">{predictionId}</span>
             </div>
           </div>
         </div>
@@ -618,9 +618,9 @@ const PredictionResults = () => {
 
       {/* Additional Notes */}
       {inputData?.notes && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Additional Notes</h3>
-          <p className="text-gray-600 dark:text-gray-400">{inputData.notes}</p>
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Additional Notes</h3>
+          <p className="text-black dark:text-white opacity-70">{inputData.notes}</p>
         </div>
       )}
     </div>
@@ -646,11 +646,11 @@ const PredictionResults = () => {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Header */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6 mb-6">
         <div className="flex items-center justify-between mb-4">
           <button
             onClick={() => navigate('/prediction')}
-            className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+            className="flex items-center space-x-2 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
           >
             <ArrowLeft size={16} />
             <span>Back to Prediction</span>
@@ -668,10 +668,10 @@ const PredictionResults = () => {
         
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="text-2xl font-bold text-black dark:text-white mb-2">
               Yield Prediction Results
             </h1>
-            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center space-x-4 text-sm text-black dark:text-white opacity-60">
               <div className="flex items-center space-x-1">
                 <MapPin size={14} />
                 <span>{inputData?.location}</span>
@@ -692,8 +692,8 @@ const PredictionResults = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
-        <div className="border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white mb-6">
+        <div className="border-b border-black dark:border-white">
           <nav className="flex space-x-8 px-6" aria-label="Tabs">
             {tabs.map((tab) => {
               const Icon = tab.icon;
@@ -704,7 +704,7 @@ const PredictionResults = () => {
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === tab.id
                       ? 'border-green-500 text-green-600 dark:text-green-400'
-                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
+                      : 'border-transparent text-black dark:text-white opacity-60 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600'
                   }`}
                 >
                   <Icon size={16} />
@@ -721,8 +721,8 @@ const PredictionResults = () => {
       </div>
 
       {/* Feedback Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Was this prediction helpful?</h3>
+      <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-black dark:border-white p-6">
+        <h3 className="text-lg font-semibold text-black dark:text-white mb-4">Was this prediction helpful?</h3>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <button className="flex items-center space-x-2 px-4 py-2 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-lg transition-colors">

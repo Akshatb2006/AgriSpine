@@ -223,10 +223,10 @@ const PredictionsDashboard = () => {
           <div className="bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 rounded-full p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center">
             <Brain size={48} className="text-purple-600 dark:text-purple-400" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl font-bold text-black dark:text-white mb-4">
             No Fields Available
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+          <p className="text-black dark:text-white opacity-70 mb-8 text-lg">
             You need to add fields before creating AI predictions for your crops.
           </p>
           <button
@@ -296,12 +296,12 @@ const PredictionsDashboard = () => {
       </div>
 
       {/* Field Selector */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white p-6">
         <div className="flex items-center space-x-3 mb-4">
           <div className="bg-green-100 dark:bg-green-900/20 rounded-lg p-2">
             <Layers className="w-5 h-5 text-green-600" />
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-black dark:text-white">
             Select Field for Analysis
           </h2>
         </div>
@@ -317,8 +317,8 @@ const PredictionsDashboard = () => {
             </div>
             <span className="text-2xl font-bold text-blue-600">{stats.total}</span>
           </div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Total Predictions</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Across all fields</p>
+          <h3 className="font-semibold text-black dark:text-white mb-1">Total Predictions</h3>
+          <p className="text-sm text-black dark:text-white opacity-70">Across all fields</p>
         </div>
 
         <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-800">
@@ -328,8 +328,8 @@ const PredictionsDashboard = () => {
             </div>
             <span className="text-2xl font-bold text-green-600">{stats.completed}</span>
           </div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Completed</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Analysis finished</p>
+          <h3 className="font-semibold text-black dark:text-white mb-1">Completed</h3>
+          <p className="text-sm text-black dark:text-white opacity-70">Analysis finished</p>
         </div>
 
         <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-800">
@@ -339,8 +339,8 @@ const PredictionsDashboard = () => {
             </div>
             <span className="text-2xl font-bold text-purple-600">{Math.round(stats.avgAccuracy)}%</span>
           </div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Avg Accuracy</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Prediction quality</p>
+          <h3 className="font-semibold text-black dark:text-white mb-1">Avg Accuracy</h3>
+          <p className="text-sm text-black dark:text-white opacity-70">Prediction quality</p>
         </div>
 
         <div className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-800">
@@ -350,55 +350,55 @@ const PredictionsDashboard = () => {
             </div>
             <span className="text-2xl font-bold text-orange-600">{Math.round(stats.avgYield)}</span>
           </div>
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Avg Yield</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">kg/ha predicted</p>
+          <h3 className="font-semibold text-black dark:text-white mb-1">Avg Yield</h3>
+          <p className="text-sm text-black dark:text-white opacity-70">kg/ha predicted</p>
         </div>
       </div>
 
       {/* Prediction Type Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center space-x-3 mb-4">
             <div className="bg-purple-100 dark:bg-purple-900/20 rounded-lg p-2">
               <TrendingUp className="w-6 h-6 text-purple-600" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Yield Predictions</h3>
+              <h3 className="font-semibold text-black dark:text-white">Yield Predictions</h3>
               <p className="text-2xl font-bold text-purple-600">{stats.yieldPredictions}</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Crop yield analysis and forecasting</p>
+          <p className="text-sm text-black dark:text-white opacity-70">Crop yield analysis and forecasting</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center space-x-3 mb-4">
             <div className="bg-orange-100 dark:bg-orange-900/20 rounded-lg p-2">
               <AlertCircle className="w-6 h-6 text-orange-600" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Disease Analysis</h3>
+              <h3 className="font-semibold text-black dark:text-white">Disease Analysis</h3>
               <p className="text-2xl font-bold text-orange-600">{stats.diseasePredictions}</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Plant health and disease detection</p>
+          <p className="text-sm text-black dark:text-white opacity-70">Plant health and disease detection</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white p-6">
           <div className="flex items-center space-x-3 mb-4">
             <div className="bg-red-100 dark:bg-red-900/20 rounded-lg p-2">
               <Target className="w-6 h-6 text-red-600" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Pest Control</h3>
+              <h3 className="font-semibold text-black dark:text-white">Pest Control</h3>
               <p className="text-2xl font-bold text-red-600">{stats.pestPredictions}</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Pest risk assessment and prevention</p>
+          <p className="text-sm text-black dark:text-white opacity-70">Pest risk assessment and prevention</p>
         </div>
       </div>
 
       {/* Enhanced Filters */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center space-x-2">
@@ -449,7 +449,7 @@ const PredictionsDashboard = () => {
                 className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 w-64"
               />
             </div>
-            <button className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg transition-colors">
+            <button className="flex items-center space-x-2 text-black dark:text-white opacity-70 hover:text-gray-800 dark:hover:text-gray-200 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg transition-colors">
               <Download size={16} />
               <span>Export</span>
             </button>
@@ -458,10 +458,10 @@ const PredictionsDashboard = () => {
       </div>
 
       {/* Enhanced Predictions List */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm border border-black dark:border-white overflow-hidden">
+        <div className="p-6 border-b border-black dark:border-white">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-semibold text-black dark:text-white">
               Your AI Predictions ({filteredPredictions.length})
             </h2>
             {stats.bestAccuracy > 0 && (
@@ -488,10 +488,10 @@ const PredictionsDashboard = () => {
             <div className="bg-gray-100 dark:bg-gray-700 rounded-full p-8 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
               <Brain size={40} className="text-gray-400" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-3">
               No predictions found
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
+            <p className="text-black dark:text-white opacity-70 mb-8 max-w-md mx-auto">
               {filterStatus === 'all' ? 
                 "Create your first AI prediction to get intelligent insights about your crops." :
                 `No predictions with status "${filterStatus}" found. Try adjusting your filters.`
@@ -514,7 +514,7 @@ const PredictionsDashboard = () => {
                     
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-3">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white capitalize">
+                        <h3 className="text-lg font-semibold text-black dark:text-white capitalize">
                           {prediction.cropType} {prediction.predictionType === 'yield' ? 'Yield Prediction' : prediction.predictionType === 'disease' ? 'Disease Analysis' : 'Pest Assessment'}
                         </h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getPredictionTypeColor(prediction.predictionType)}`}>
@@ -530,14 +530,14 @@ const PredictionsDashboard = () => {
                         {prediction.predictionType === 'yield' && (
                           <>
                             <div>
-                              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Predicted Yield</p>
-                              <p className="font-semibold text-gray-900 dark:text-white">
+                              <p className="text-xs text-black dark:text-white opacity-60 mb-1">Predicted Yield</p>
+                              <p className="font-semibold text-black dark:text-white">
                                 {prediction.predictedYield?.toLocaleString() || 'Processing...'} kg/ha
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Confidence</p>
-                              <p className="font-semibold text-gray-900 dark:text-white">
+                              <p className="text-xs text-black dark:text-white opacity-60 mb-1">Confidence</p>
+                              <p className="font-semibold text-black dark:text-white">
                                 {prediction.confidence || '--'}%
                               </p>
                             </div>
@@ -546,7 +546,7 @@ const PredictionsDashboard = () => {
                         
                         {prediction.predictionType === 'disease' && (
                           <div>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Disease Risk</p>
+                            <p className="text-xs text-black dark:text-white opacity-60 mb-1">Disease Risk</p>
                             <p className={`font-semibold ${prediction.diseaseRisk === 'Low' ? 'text-green-600' : prediction.diseaseRisk === 'Medium' ? 'text-yellow-600' : 'text-red-600'}`}>
                               {prediction.diseaseRisk || 'Analyzing...'}
                             </p>
@@ -555,7 +555,7 @@ const PredictionsDashboard = () => {
                         
                         {prediction.predictionType === 'pest' && (
                           <div>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Pest Risk</p>
+                            <p className="text-xs text-black dark:text-white opacity-60 mb-1">Pest Risk</p>
                             <p className={`font-semibold ${prediction.pestRisk === 'Low' ? 'text-green-600' : prediction.pestRisk === 'Medium' ? 'text-yellow-600' : 'text-red-600'}`}>
                               {prediction.pestRisk || 'Analyzing...'}
                             </p>
@@ -563,17 +563,17 @@ const PredictionsDashboard = () => {
                         )}
                         
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Field Size</p>
-                          <p className="font-semibold text-gray-900 dark:text-white">
+                          <p className="text-xs text-black dark:text-white opacity-60 mb-1">Field Size</p>
+                          <p className="font-semibold text-black dark:text-white">
                             {prediction.fieldSize} acres
                           </p>
                         </div>
                         
                         <div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Location</p>
+                          <p className="text-xs text-black dark:text-white opacity-60 mb-1">Location</p>
                           <div className="flex items-center space-x-1">
                             <MapPin size={12} className="text-gray-400" />
-                            <p className="font-medium text-gray-900 dark:text-white text-sm">
+                            <p className="font-medium text-black dark:text-white text-sm">
                               {prediction.location}
                             </p>
                           </div>
@@ -594,7 +594,7 @@ const PredictionsDashboard = () => {
                         </div>
                       )}
                       
-                      <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center justify-between text-sm text-black dark:text-white opacity-60">
                         <div className="flex items-center space-x-4">
                           <div className="flex items-center space-x-1">
                             <Calendar size={14} />
@@ -663,10 +663,10 @@ const PredictionsDashboard = () => {
             <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white p-4 rounded-2xl w-20 h-20 mx-auto mb-6 flex items-center justify-center">
               <Sparkles size={32} />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-4">
               Ready for more AI insights?
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto text-lg">
+            <p className="text-black dark:text-white opacity-70 mb-8 max-w-2xl mx-auto text-lg">
               Generate new predictions for {selectedField.name} using our advanced AI models. 
               Get yield forecasts, disease analysis, and pest control recommendations.
             </p>
@@ -681,7 +681,7 @@ const PredictionsDashboard = () => {
               </button>
               <button
                 onClick={() => navigate('/fields')}
-                className="flex items-center justify-center space-x-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-xl font-semibold transition-all duration-200"
+                className="flex items-center justify-center space-x-3 bg-white dark:bg-black border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-xl font-semibold transition-all duration-200"
               >
                 <Layers size={20} />
                 <span>Manage Fields</span>
