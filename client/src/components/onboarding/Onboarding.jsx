@@ -264,7 +264,7 @@ const Onboarding = ({ onComplete }) => {
             className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
               step <= currentStep
                 ? 'bg-green-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
+                : 'bg-gray-200 text-gray-500'
             }`}
           >
             {step < currentStep ? (
@@ -278,7 +278,7 @@ const Onboarding = ({ onComplete }) => {
               className={`w-12 h-1 mx-2 transition-colors ${
                 step < currentStep
                   ? 'bg-green-600'
-                  : 'bg-gray-200 dark:bg-gray-700'
+                  : 'bg-gray-200'
               }`}
             />
           )}
@@ -291,19 +291,19 @@ const Onboarding = ({ onComplete }) => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <User className="w-12 h-12 text-green-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Tell us about yourself</h2>
-        <p className="text-gray-600 dark:text-gray-400">Help us understand your farming background</p>
+        <h2 className="text-2xl font-bold text-gray-900">Tell us about yourself</h2>
+        <p className="text-gray-600">Help us understand your farming background</p>
       </div>
 
       {/* Farming Experience */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Farming Experience *
         </label>
         <select
           value={formData.farmingExperience}
           onChange={(e) => handleInputChange('farmingExperience', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         >
           <option value="">Select your experience level</option>
           {farmingExperienceOptions.map((option) => (
@@ -313,13 +313,13 @@ const Onboarding = ({ onComplete }) => {
           ))}
         </select>
         {errors.farmingExperience && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.farmingExperience}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.farmingExperience}</p>
         )}
       </div>
 
       {/* Farm Size */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Total Farm Size (in acres) *
         </label>
         <input
@@ -328,16 +328,16 @@ const Onboarding = ({ onComplete }) => {
           placeholder="e.g., 5.5"
           value={formData.farmSize}
           onChange={(e) => handleInputChange('farmSize', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
         {errors.farmSize && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.farmSize}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.farmSize}</p>
         )}
       </div>
 
       {/* Farming Method */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+        <label className="block text-sm font-medium text-gray-700 mb-3">
           Preferred Farming Method *
         </label>
         <div className="space-y-3">
@@ -346,8 +346,8 @@ const Onboarding = ({ onComplete }) => {
               key={method.value}
               className={`flex items-start p-4 border-2 rounded-lg cursor-pointer transition-colors ${
                 formData.farmingMethod === method.value
-                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                  : 'border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600'
+                  ? 'border-green-500 bg-green-50/20'
+                  : 'border-gray-200 hover:border-green-300:border-green-600'
               }`}
             >
               <input
@@ -359,8 +359,8 @@ const Onboarding = ({ onComplete }) => {
                 className="mt-1 mr-3"
               />
               <div>
-                <div className="font-medium text-gray-900 dark:text-white">{method.label}</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{method.description}</div>
+                <div className="font-medium text-gray-900">{method.label}</div>
+                <div className="text-sm text-gray-600">{method.description}</div>
               </div>
             </label>
           ))}
@@ -369,7 +369,7 @@ const Onboarding = ({ onComplete }) => {
 
       {/* Primary Crops */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+        <label className="block text-sm font-medium text-gray-700 mb-3">
           Primary Crops (select all that apply) *
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -380,17 +380,17 @@ const Onboarding = ({ onComplete }) => {
               onClick={() => handleCropToggle(crop.value)}
               className={`p-3 rounded-lg border-2 text-center transition-colors ${
                 formData.primaryCrops.includes(crop.value)
-                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
-                  : 'border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600'
+                  ? 'border-green-500 bg-green-50/20 text-green-700'
+                  : 'border-gray-200 hover:border-green-300:border-green-600'
               }`}
             >
               <div className="text-2xl mb-1">{crop.icon}</div>
-              <div className="text-xs font-medium text-gray-900 dark:text-white">{crop.label}</div>
+              <div className="text-xs font-medium text-gray-900">{crop.label}</div>
             </button>
           ))}
         </div>
         {errors.primaryCrops && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.primaryCrops}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.primaryCrops}</p>
         )}
       </div>
     </div>
@@ -400,12 +400,12 @@ const Onboarding = ({ onComplete }) => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <MapPin className="w-12 h-12 text-blue-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Farm Location</h2>
-        <p className="text-gray-600 dark:text-gray-400">Tell us where your farm is located</p>
+        <h2 className="text-2xl font-bold text-gray-900">Farm Location</h2>
+        <p className="text-gray-600">Tell us where your farm is located</p>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           State *
         </label>
         <input
@@ -413,15 +413,15 @@ const Onboarding = ({ onComplete }) => {
           placeholder="e.g., Maharashtra"
           value={formData.location.state}
           onChange={(e) => handleInputChange('location.state', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
         {errors['location.state'] && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors['location.state']}</p>
+          <p className="mt-1 text-sm text-red-600">{errors['location.state']}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           District *
         </label>
         <input
@@ -429,15 +429,15 @@ const Onboarding = ({ onComplete }) => {
           placeholder="e.g., Pune"
           value={formData.location.district}
           onChange={(e) => handleInputChange('location.district', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
         {errors['location.district'] && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors['location.district']}</p>
+          <p className="mt-1 text-sm text-red-600">{errors['location.district']}</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Village/Tehsil
         </label>
         <input
@@ -445,19 +445,19 @@ const Onboarding = ({ onComplete }) => {
           placeholder="e.g., Hadapsar"
           value={formData.location.village}
           onChange={(e) => handleInputChange('location.village', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
 
       {formData.location.coordinates && (
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+        <div className="bg-blue-50/20 border border-blue-200 rounded-lg p-4">
           <div className="flex items-center space-x-2">
             <MapPin size={16} className="text-blue-600" />
-            <span className="text-blue-700 dark:text-blue-300 text-sm font-medium">
+            <span className="text-blue-700 text-sm font-medium">
               Current location detected
             </span>
           </div>
-          <p className="text-blue-600 dark:text-blue-400 text-sm mt-1">
+          <p className="text-blue-600 text-sm mt-1">
             Lat: {formData.location.coordinates[1].toFixed(4)}, 
             Lng: {formData.location.coordinates[0].toFixed(4)}
           </p>
@@ -470,8 +470,8 @@ const Onboarding = ({ onComplete }) => {
     <div className="space-y-6">
       <div className="text-center mb-6">
         <Wheat className="w-12 h-12 text-purple-600 mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Your Fields</h2>
-        <p className="text-gray-600 dark:text-gray-400">Add detailed information about your farming fields</p>
+        <h2 className="text-2xl font-bold text-gray-900">Your Fields</h2>
+        <p className="text-gray-600">Add detailed information about your farming fields</p>
       </div>
 
       <div className="flex justify-center mb-6">
@@ -488,15 +488,15 @@ const Onboarding = ({ onComplete }) => {
         {formData.fields.map((field, index) => (
           <div
             key={field.id}
-            className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-600"
+            className="bg-gray-50 rounded-lg p-6 border border-gray-200"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-medium text-gray-900 dark:text-white text-lg">
+              <h3 className="font-medium text-gray-900 text-lg">
                 Field {index + 1} Details
               </h3>
               <button
                 onClick={() => removeField(field.id)}
-                className="text-red-600 hover:text-red-700 p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
+                className="text-red-600 hover:text-red-700 p-2 hover:bg-red-50:bg-red-900/20 rounded transition-colors"
               >
                 <Trash2 size={18} />
               </button>
@@ -506,25 +506,25 @@ const Onboarding = ({ onComplete }) => {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Field Name *
                   </label>
                   <input
                     type="text"
                     value={field.name}
                     onChange={(e) => updateField(field.id, { name: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="e.g., North Field"
                   />
                   {errors[`field_${field.id}_name`] && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors[`field_${field.id}_name`]}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Area (acres) *
                   </label>
                   <input
@@ -532,24 +532,24 @@ const Onboarding = ({ onComplete }) => {
                     step="0.1"
                     value={field.area}
                     onChange={(e) => updateField(field.id, { area: parseFloat(e.target.value) || '' })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="e.g., 2.5"
                   />
                   {errors[`field_${field.id}_area`] && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors[`field_${field.id}_area`]}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Current/Planned Crop *
                   </label>
                   <select
                     value={field.cropType}
                     onChange={(e) => updateField(field.id, { cropType: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   >
                     <option value="">Select crop type</option>
                     {cropOptions.map((crop) => (
@@ -559,20 +559,20 @@ const Onboarding = ({ onComplete }) => {
                     ))}
                   </select>
                   {errors[`field_${field.id}_crop`] && (
-                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                    <p className="mt-1 text-sm text-red-600">
                       {errors[`field_${field.id}_crop`]}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Current Growth Stage
                   </label>
                   <select
                     value={field.growthStage}
                     onChange={(e) => updateField(field.id, { growthStage: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   >
                     {growthStages.map((stage) => (
                       <option key={stage.value} value={stage.value}>
@@ -583,13 +583,13 @@ const Onboarding = ({ onComplete }) => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Soil Type
                   </label>
                   <select
                     value={field.soilType}
                     onChange={(e) => updateField(field.id, { soilType: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   >
                     <option value="">Select soil type</option>
                     {soilTypes.map((soil) => (
@@ -601,13 +601,13 @@ const Onboarding = ({ onComplete }) => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Irrigation Type
                   </label>
                   <select
                     value={field.irrigationType}
                     onChange={(e) => updateField(field.id, { irrigationType: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   >
                     <option value="">Select irrigation type</option>
                     {irrigationTypes.map((irrigation) => (
@@ -621,19 +621,19 @@ const Onboarding = ({ onComplete }) => {
 
               {/* Additional Details (Collapsible) */}
               <details className="group mt-4">
-                <summary className="flex items-center justify-between cursor-pointer p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
-                  <span className="font-medium text-blue-900 dark:text-blue-100 flex items-center">
+                <summary className="flex items-center justify-between cursor-pointer p-3 bg-blue-50/20 rounded-lg hover:bg-blue-100:bg-blue-900/30 transition-colors">
+                  <span className="font-medium text-blue-900 flex items-center">
                     <TestTube size={16} className="mr-2" />
                     Additional Field Data (Optional but Recommended)
                   </span>
                   <ChevronRight size={16} className="text-blue-600 group-open:rotate-90 transition-transform" />
                 </summary>
                 
-                <div className="mt-4 space-y-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div className="mt-4 space-y-4 p-4 bg-white rounded-lg border border-gray-200">
                   {/* Planting Date */}
                   {field.growthStage !== 'not_planted' && field.growthStage !== 'land_preparation' && (
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center">
+                      <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center">
                         <Calendar size={14} className="mr-1" />
                         Planting Date
                       </label>
@@ -641,14 +641,14 @@ const Onboarding = ({ onComplete }) => {
                         type="date"
                         value={field.plantingDate}
                         onChange={(e) => updateField(field.id, { plantingDate: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                       />
                     </div>
                   )}
 
                   {/* Previous Yield */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Previous Season Yield (kg/acre)
                     </label>
                     <input
@@ -657,21 +657,21 @@ const Onboarding = ({ onComplete }) => {
                       value={field.previousYield}
                       onChange={(e) => updateField(field.id, { previousYield: e.target.value })}
                       placeholder="e.g., 2500"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     />
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <p className="text-xs text-gray-500 mt-1">
                       Helps AI provide better yield predictions
                     </p>
                   </div>
 
                   {/* Soil Health Data */}
                   <div className="space-y-3">
-                    <h4 className="font-medium text-gray-900 dark:text-white text-sm">
+                    <h4 className="font-medium text-gray-900 text-sm">
                       Soil Health (if available from soil test)
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                       <div>
-                        <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+                        <label className="block text-xs text-gray-600 mb-1">
                           pH Level
                         </label>
                         <input
@@ -682,11 +682,11 @@ const Onboarding = ({ onComplete }) => {
                           value={field.soilHealth.pH}
                           onChange={(e) => updateFieldSoilHealth(field.id, { pH: e.target.value })}
                           placeholder="e.g., 6.5"
-                          className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-900"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+                        <label className="block text-xs text-gray-600 mb-1">
                           Nitrogen (N)
                         </label>
                         <input
@@ -695,11 +695,11 @@ const Onboarding = ({ onComplete }) => {
                           value={field.soilHealth.nitrogen}
                           onChange={(e) => updateFieldSoilHealth(field.id, { nitrogen: e.target.value })}
                           placeholder="kg/ha"
-                          className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-900"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+                        <label className="block text-xs text-gray-600 mb-1">
                           Phosphorus (P)
                         </label>
                         <input
@@ -708,11 +708,11 @@ const Onboarding = ({ onComplete }) => {
                           value={field.soilHealth.phosphorus}
                           onChange={(e) => updateFieldSoilHealth(field.id, { phosphorus: e.target.value })}
                           placeholder="kg/ha"
-                          className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-900"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+                        <label className="block text-xs text-gray-600 mb-1">
                           Potassium (K)
                         </label>
                         <input
@@ -721,11 +721,11 @@ const Onboarding = ({ onComplete }) => {
                           value={field.soilHealth.potassium}
                           onChange={(e) => updateFieldSoilHealth(field.id, { potassium: e.target.value })}
                           placeholder="kg/ha"
-                          className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-900"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
+                        <label className="block text-xs text-gray-600 mb-1">
                           Organic Matter (%)
                         </label>
                         <input
@@ -734,7 +734,7 @@ const Onboarding = ({ onComplete }) => {
                           value={field.soilHealth.organicMatter}
                           onChange={(e) => updateFieldSoilHealth(field.id, { organicMatter: e.target.value })}
                           placeholder="e.g., 2.5"
-                          className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                          className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded bg-white text-gray-900"
                         />
                       </div>
                     </div>
@@ -742,14 +742,14 @@ const Onboarding = ({ onComplete }) => {
 
                   {/* Water Availability */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex items-center">
+                    <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
                       <Droplet size={14} className="mr-1" />
                       Water Availability
                     </label>
                     <select
                       value={field.waterAvailability}
                       onChange={(e) => updateField(field.id, { waterAvailability: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     >
                       <option value="abundant">Abundant - Always available</option>
                       <option value="adequate">Adequate - Usually sufficient</option>
@@ -760,7 +760,7 @@ const Onboarding = ({ onComplete }) => {
 
                   {/* Known Issues */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Known Issues or Concerns
                     </label>
                     <textarea
@@ -768,9 +768,9 @@ const Onboarding = ({ onComplete }) => {
                       onChange={(e) => updateField(field.id, { knownIssues: e.target.value })}
                       placeholder="e.g., pest problems, drainage issues, nutrient deficiency..."
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
                     />
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <p className="text-xs text-gray-500 mt-1">
                       This helps AI provide targeted recommendations
                     </p>
                   </div>
@@ -783,27 +783,27 @@ const Onboarding = ({ onComplete }) => {
 
       {/* Summary */}
       {formData.fields.length > 0 && (
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-          <h3 className="font-medium text-blue-900 dark:text-blue-100 mb-2">Summary</h3>
-          <p className="text-blue-700 dark:text-blue-300 text-sm">
+        <div className="bg-blue-50/20 border border-blue-200 rounded-lg p-4">
+          <h3 className="font-medium text-blue-900 mb-2">Summary</h3>
+          <p className="text-blue-700 text-sm">
             Total Fields: {formData.fields.length} | 
             Total Area: {formData.fields.reduce((sum, field) => sum + (parseFloat(field.area) || 0), 0).toFixed(1)} acres
           </p>
-          <p className="text-blue-600 dark:text-blue-400 text-xs mt-2">
+          <p className="text-blue-600 text-xs mt-2">
             💡 More detailed information helps our AI provide better recommendations
           </p>
         </div>
       )}
 
       {errors.fields && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-          <p className="text-red-700 dark:text-red-300 text-sm">{errors.fields}</p>
+        <div className="bg-red-50/20 border border-red-200 rounded-lg p-4">
+          <p className="text-red-700 text-sm">{errors.fields}</p>
         </div>
       )}
 
       {errors.submit && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-          <p className="text-red-700 dark:text-red-300 text-sm">{errors.submit}</p>
+        <div className="bg-red-50/20 border border-red-200 rounded-lg p-4">
+          <p className="text-red-700 text-sm">{errors.submit}</p>
         </div>
       )}
     </div>
@@ -829,9 +829,9 @@ const Onboarding = ({ onComplete }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-8">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -839,10 +839,10 @@ const Onboarding = ({ onComplete }) => {
                 <Wheat size={24} />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Welcome to Farmer's Desk
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-gray-600">
               Let's set up your farm profile to get AI-powered insights
             </p>
           </div>
@@ -852,7 +852,7 @@ const Onboarding = ({ onComplete }) => {
 
           {/* Step Title */}
           <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-semibold text-gray-900">
               {stepTitles[currentStep]}
             </h2>
           </div>
@@ -863,17 +863,17 @@ const Onboarding = ({ onComplete }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between items-center pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex justify-between items-center pt-6 border-t border-gray-200">
             <button
               onClick={handlePrevious}
               disabled={currentStep === 1}
-              className="flex items-center space-x-2 px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-800:text-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <ChevronLeft size={16} />
               <span>Previous</span>
             </button>
 
-            <div className="text-sm text-gray-500 dark:text-gray-400">
+            <div className="text-sm text-gray-500">
               Step {currentStep} of 3
             </div>
 

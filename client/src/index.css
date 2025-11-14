@@ -1,7 +1,5 @@
 /* ===== src/index.css ===== */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './styles.css';
 
 /* Simple 2-color theme */
 :root {

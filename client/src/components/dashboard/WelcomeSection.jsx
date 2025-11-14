@@ -16,7 +16,7 @@ const WelcomeSection = ({ selectedField }) => {
   });
 
   return (
-    <div className="bg-black dark:bg-white rounded p-6 text-white dark:text-black">
+    <div className="bg-black rounded p-6 text-white">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         <div className="mb-4 lg:mb-0">
           <h1 className="text-2xl sm:text-3xl font-bold mb-2">

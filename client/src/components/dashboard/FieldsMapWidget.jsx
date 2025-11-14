@@ -41,31 +41,31 @@ const FieldsMapWidget = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
+        <h2 className="text-lg font-semibold text-gray-900 flex items-center">
           My Fields
           <Star className="ml-2 w-4 h-4 text-gray-400" />
         </h2>
-        <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+        <button className="p-2 text-gray-400 hover:text-gray-600:text-gray-300 transition-colors">
           <Maximize2 size={16} />
         </button>
       </div>
 
       <div className="relative">
         <div 
-          className="w-full h-64 sm:h-80 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 rounded-lg relative overflow-hidden"
+          className="w-full h-64 sm:h-80 bg-gradient-to-br from-green-100 to-green-200/20/20 rounded-lg relative overflow-hidden"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2316a34a' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`,
           }}
         >
           {/* Farm structures */}
-          <div className="absolute top-4 left-4 w-3 h-3 bg-gray-600 dark:bg-gray-400 rounded-sm"></div>
-          <div className="absolute top-4 left-8 w-2 h-2 bg-gray-500 dark:bg-gray-500 rounded-sm"></div>
+          <div className="absolute top-4 left-4 w-3 h-3 bg-gray-600 rounded-sm"></div>
+          <div className="absolute top-4 left-8 w-2 h-2 bg-gray-500 rounded-sm"></div>
           
           {/* Roads */}
-          <div className="absolute top-0 left-16 w-1 h-full bg-gray-300 dark:bg-gray-600 opacity-50"></div>
-          <div className="absolute top-20 left-0 w-full h-1 bg-gray-300 dark:bg-gray-600 opacity-50"></div>
+          <div className="absolute top-0 left-16 w-1 h-full bg-gray-300 opacity-50"></div>
+          <div className="absolute top-20 left-0 w-full h-1 bg-gray-300 opacity-50"></div>
 
           {/* Fields */}
           {fields.map((field) => (
@@ -88,10 +88,10 @@ const FieldsMapWidget = () => {
                 <span className="text-white text-xs font-bold">{field.id}</span>
               </div>
               <div className="mt-1 text-center">
-                <div className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                <div className="text-xs font-medium text-gray-700">
                   {field.name}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">
+                <div className="text-xs text-gray-500">
                   ({field.crop})
                 </div>
               </div>
@@ -99,25 +99,25 @@ const FieldsMapWidget = () => {
           ))}
 
           {/* Legend */}
-          <div className="absolute bottom-4 right-4 bg-white dark:bg-gray-800 rounded-lg p-3 shadow-lg border border-gray-200 dark:border-gray-700">
-            <div className="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <div className="absolute bottom-4 right-4 bg-white rounded-lg p-3 shadow-lg border border-gray-200">
+            <div className="text-xs font-medium text-gray-700 mb-2">
               Field Status
             </div>
             <div className="space-y-1">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-gray-400 rounded"></div>
-                <span className="text-xs text-gray-600 dark:text-gray-400">Pest/Disease</span>
+                <span className="text-xs text-gray-600">Pest/Disease</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-gray-400 rounded"></div>
-                <span className="text-xs text-gray-600 dark:text-gray-400">Pest/Disease</span>
+                <span className="text-xs text-gray-600">Pest/Disease</span>
               </div>
             </div>
           </div>
 
           {/* Control buttons */}
           <div className="absolute top-4 right-4 flex flex-col space-y-2">
-            <button className="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors">
+            <button className="bg-white p-2 rounded-lg shadow-md border border-gray-200 text-gray-600 hover:text-gray-800:text-gray-200 transition-colors">
               <Eye size={16} />
             </button>
           </div>
@@ -126,14 +126,14 @@ const FieldsMapWidget = () => {
         {/* Field Details Popup */}
         {selectedField && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 rounded-lg">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full">
+            <div className="bg-white rounded-lg p-6 max-w-sm w-full">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-gray-900">
                   {selectedField.name}
                 </h3>
                 <button
                   onClick={() => setSelectedField(null)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  className="text-gray-400 hover:text-gray-600:text-gray-300"
                 >
                   <X size={20} />
                 </button>
@@ -141,26 +141,26 @@ const FieldsMapWidget = () => {
               
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Crop:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedField.crop}</span>
+                  <span className="text-gray-600">Crop:</span>
+                  <span className="font-medium text-gray-900">{selectedField.crop}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Area:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedField.area}</span>
+                  <span className="text-gray-600">Area:</span>
+                  <span className="font-medium text-gray-900">{selectedField.area}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Yield:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedField.yield}</span>
+                  <span className="text-gray-600">Yield:</span>
+                  <span className="font-medium text-gray-900">{selectedField.yield}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Soil Moisture:</span>
-                  <span className="font-medium text-gray-900 dark:text-white">{selectedField.moisture}</span>
+                  <span className="text-gray-600">Soil Moisture:</span>
+                  <span className="font-medium text-gray-900">{selectedField.moisture}</span>
                 </div>
                 {selectedField.status === 'warning' && (
-                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+                  <div className="bg-red-50/20 border border-red-200 rounded-lg p-3">
                     <div className="flex items-center space-x-2">
                       <AlertTriangle size={16} className="text-red-500" />
-                      <span className="text-red-700 dark:text-red-300 text-sm font-medium">
+                      <span className="text-red-700 text-sm font-medium">
                         Water stress detected
                       </span>
                     </div>
