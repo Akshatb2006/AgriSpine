@@ -1,7 +1,7 @@
 // client/src/services/api.js (Add plans endpoints)
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://agrispine.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -63,7 +63,7 @@ export const predictionsAPI = {
   getPredictionStatus: (predictionId) => api.get(`/predictions/yield/${predictionId}`),
   getPredictionHistory: () => api.get('/predictions/history'),
   detectDisease: (imageData) => api.post('/predictions/disease-detection', imageData),
-  
+
   // NEW METHODS - Add these to your existing predictionsAPI:
   getAllPredictions: (params = {}) => api.get('/predictions', { params }),
   createScheduledPrediction: (data) => api.post('/predictions/schedule', data),
@@ -89,7 +89,7 @@ export const plansAPI = {
   createPlan: (planData) => api.post('/plans', planData),
   updatePlan: (id, planData) => api.put(`/plans/${id}`, planData),
   deletePlan: (id) => api.delete(`/plans/${id}`),
-  updateTaskStatus: (planId, taskId, statusData) => 
+  updateTaskStatus: (planId, taskId, statusData) =>
     api.put(`/plans/${planId}/tasks/${taskId}/status`, statusData),
   addTask: (planId, taskData) => api.post(`/plans/${planId}/tasks`, taskData),
   updateTask: (planId, taskId, taskData) => api.put(`/plans/${planId}/tasks/${taskId}`, taskData),
@@ -107,7 +107,7 @@ export const tasksAPI = {
 export const alertsAPI = {
   getAllAlerts: () => api.get('/alerts'),
   markAsRead: (id) => api.put(`/alerts/${id}/read`),
-  subscribe: (alertTypes, notificationMethods) => 
+  subscribe: (alertTypes, notificationMethods) =>
     api.post('/alerts/subscribe', { alertTypes, notificationMethods }),
 };
 
